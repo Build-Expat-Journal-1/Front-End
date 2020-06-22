@@ -3,7 +3,7 @@ import { BrowserRouter as Route, Link, Switch } from 'react-router-dom';
 
 import './App.css';
 
-import PostContext from './contexts'
+// import PostContext from './contexts'
 
 import Login from './components/Login'
 import Home from './components/Home'
@@ -23,20 +23,20 @@ const initalStory = {
 
 function App() {
 
-  const [ storyToEdit, setStoryToEdit ] = useState(initalStory);
+  // const [ storyToEdit, setStoryToEdit ] = useState(initalStory);
 
-  const editStory = story => {
-      setEditing(true);
-      setStoryToEdit(story);
-  };
+  // const editStory = story => {
+  //     setEditing(true);
+  //     setStoryToEdit(story);
+  // };
 
-  const saveEdit = e => {
-      axiosWithAuth()
-      .put(`/api/stories/${storyToEdit.id}`, storyToEdit)
-      .then(res => 
-          console.log(res))
-      .catch(err => console.log(err))
-  }
+  // const saveEdit = e => {
+  //     axiosWithAuth()
+  //     .put(`/api/stories/${storyToEdit.id}`, storyToEdit)
+  //     .then(res => 
+  //         console.log(res))
+  //     .catch(err => console.log(err))
+  // }
 
   return (
 
@@ -50,6 +50,9 @@ function App() {
           </li>
           <li>
             <Link to='/profile'>Profile</Link>
+          </li>
+          <li>
+            <Link to='/home'>Home</Link>
           </li>
       </ul>
 

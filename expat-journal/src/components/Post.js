@@ -7,7 +7,7 @@ import { axiosWithAuth } from "../utils/axiosAuth.js";
 
 const Post = (props) => {
 
-    const [ editing, setEditing ] = useState(false);
+    const { story } = props
 
 
 
@@ -18,21 +18,8 @@ const Post = (props) => {
             <p>{story.location}</p>
             <p>{story.date}</p>
             <p>{story.description}</p>
-            <button onClick={editStory}>Edit</button>
-            {editing && (
-            <form onSubmit={saveEdit}>
-                <legend>edit story</legend>
-                <label>
-                    Title:
-                    <input
-                        onChange={e => 
-                        setStoryToEdit({...storyToEdit, title: e.target.value})} 
-                        value={storyToEdit.title}/>
-                    </label>
-            </form>
-        )
-
-            }
+            <button>Edit</button>
+            
         </div>
     )
 }
