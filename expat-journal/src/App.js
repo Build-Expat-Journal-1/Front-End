@@ -39,34 +39,39 @@ function App() {
   }
 
   return (
-      <PostContext.Provider value={} />
-        <div>
-            <ul>
-                <li>
-                    <Link to='/login'>Login</Link>
-                </li>
-                <li>
-                    <Link to='/sign-up'>Sign Up</Link>
-                </li>
-                <li>
-                  <Link to='/profile'>Profile</Link>
-                </li>
-            </ul>
 
-          <Switch>
-            
-                <Route path='/login' component={Login}>
-                  <Login />
-                </Route>
+   <div>
+      <ul>
+          <li>
+              <Link to='/login'>Login</Link>
+          </li>
+          <li>
+              <Link to='/sign-up'>Sign Up</Link>
+          </li>
+          <li>
+            <Link to='/profile'>Profile</Link>
+          </li>
+      </ul>
 
-                <Route path='/sign-up' component={SignUp}>
-                  <SignUp />
-                </Route>
-                <PrivateRoute path='/home' component={Home}/>
-                <PrivateRoute path='/profile/:id' component={Profile}/>
-          </Switch>
-    </div>
-  </PostContext.Provider>
+     <Switch>
+          <Route path='/login' component={Login}>
+            <Login />
+          </Route>
+
+          <Route path='/sign-up' component={SignUp}>
+            <SignUp />
+          </Route>
+    
+          <Route path='/home'>
+            <Home/>
+          </Route>
+    
+          <Route path='/profile' component={Profile}/>
+          <PrivateRoute path='/profile/:id' component={Profile}/>
+
+    </Switch>
+   </div>
+
   )
 }
 
