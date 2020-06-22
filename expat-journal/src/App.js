@@ -35,10 +35,14 @@ function App() {
           <Route path='/sign-up' component={SignUp}>
             <SignUp />
           </Route>
+    
           <Route path='/home'>
             <Home/>
           </Route>
+    
           <Route path='/profile' component={Profile}/>
+          <PrivateRoute path='/profile/:id' component={Profile}/>
+
     </Switch>
    </div>
   )
