@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
 
 import './Login.css'
 
-const Login = props => {
+
+const initalCredentials = {
+    username: '',
+    password: ''
+  }
+
+
+const Login = () => {
+
+const [ credentials, setCredentials ] = useState(initalCredentials)
 
 const onInputChange = evt => {
         const name = evt.target.name
         const value = evt.target.value
 
-        props.setCredentials({
-            ...props.credentials,
+        setCredentials({
+            ...credentials,
             [name]: value 
         })
     }
@@ -22,7 +31,7 @@ const onInputChange = evt => {
                 label='USERNAME' 
                 variant='outlined'
                 name='username'
-                value={props.credentials.username}
+                value={credentials.username}
                 onChange={onInputChange}/>
                 
                 <TextField 
@@ -30,10 +39,10 @@ const onInputChange = evt => {
                 label='PASSWORD' 
                 variant='outlined'
                 name='password'
-                value={props.credentials.password}
+                value={credentials.password}
                 onChange={onInputChange}/>
 
-                <Button onClick={props.login} variant='contained' color='primary'>
+                <Button variant='contained' color='primary'>
                     Login
                 </Button>
         </form>
