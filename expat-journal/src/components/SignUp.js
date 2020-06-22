@@ -7,19 +7,15 @@ import * as Yup from 'yup'
 
 
 const signUpInitialValue = {
-    id: uuid(),
-    first_name: '',
-    last_name:'',
-    email: '',
+
+    username: '',
     password: '',
 
 }
 
 const errors = {
   
-    first_name: '',
-    last_name: '',
-    email: '',
+    username:'',
     password:'',
     
     
@@ -29,7 +25,7 @@ const SignUp = (props) => {
 
     const [newUser, setNewUser] = useState([]);
     const [signUpForm, setSignUp] = useState(signUpInitialValue);
-    const [signUpError, setOrderError] = useState(errors) 
+    const [signUpError, setSignUpError] = useState(errors) 
     const [disable, setDisabled] = useState(true) 
   
   
@@ -73,14 +69,14 @@ const SignUp = (props) => {
         .validate(value)
         
         .then(() => {
-          setOrderError({
+          setSignUpError({
             ...signUpError,
             [name]: ''
           })
         })
         
         .catch(err => {
-          setOrderError({
+          setSignUpError({
             ...signUpError,
             [name]: err.errors[0] 
           })
@@ -93,25 +89,14 @@ const SignUp = (props) => {
     }
   
     
-    const onCheckboxChange = evt => {
-     
-      const { name, checked } = evt.target
-  
-        setSignUp({
-          ...signUpForm, 
-         
-        })
-        
-      
-    }
+    
     const onSubmit = evt => {
       evt.preventDefault()
       
       const newSignUp = {
-        id: uuid(),
-        first_name: signUpForm.first_name.trim(),
-        last_name: signUpForm.last_name.trim(),
-        email: signUpForm.email.trim(),
+    
+        username: signUpForm.first_name.trim(),
+     
         password: signUpForm.password.trim() 
       }
        postNewUser(newSignUp)
@@ -144,15 +129,13 @@ const SignUp = (props) => {
           
             <div style={{display:'flex', justifyContent:'center', alignContent:'center', flexDirection:'column'}} className="imput-container">
          
-                <TextField  required id="first_name" label="First Name" variant="filled" />
-                <TextField  required id="last_name" label="Last Name" variant="filled" />
-                <TextField  required id="email" label="Email" variant='filled'/>
-                <TextField  required id="password" typw="password" label="Password" variant='filled'/>
+                <TextField  onChange={onInputChange} required id="username" label="Username" type="username" variant="filled" />
+                <TextField   onChange={onInputChange} required id="password" type="password" label="Password" variant='filled'/>
             
             </div>
             <div className= 'submit-btn'>
 
-                  <Button variant="contained" disabled={disable}> Sumbit </Button>
+                  <Button variant="contained" disabled > Sumbit </Button>
 
             </div>
          
