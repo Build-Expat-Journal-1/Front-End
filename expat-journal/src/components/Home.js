@@ -1,12 +1,42 @@
-import React from "react"
+import React,{useState, useEffect,} from "react"
 import Post from './Post'
+import axios from 'axios'
 
 
 const Home = () => {
+  
+  
+    const [userStories, setStories]= useState([])
 
+
+    useEffect(() => {
+        axios.get(`https://bw-expatjournal.herokuapp.com/api/stories`)
+        .then(response =>{
+         
+          setStories(response.data)
+        
+        })
+        .catch(err =>{
+            debugger
+        })
+        
+      }, [])
+        
+    
+  
     return (
         <div>
-            <Post />
+       
+       {
+        userStories.map(info => {
+          return (
+            <Post story={info} />
+          )
+        })
+      }
+    
+    
+    
         </div>
     )
 

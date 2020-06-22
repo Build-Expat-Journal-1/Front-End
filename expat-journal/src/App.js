@@ -35,8 +35,14 @@ function App() {
           <Route path='/sign-up' component={SignUp}>
             <SignUp />
           </Route>
-          <PrivateRoute path='/home' component={Home}/>
+    
+          <Route path='/home'>
+            <Home/>
+          </Route>
+    
+          <Route path='/profile' component={Profile}/>
           <PrivateRoute path='/profile/:id' component={Profile}/>
+
     </Switch>
    </div>
   )

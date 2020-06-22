@@ -24,7 +24,9 @@ const SignUp = () => {
 
     const [signUpForm, setSignUp] = useState(signUpInitialValue);
     const [signUpError, setSignUpError] = useState(errors) 
+
     const [disabled, setDisabled] = useState(true) 
+
   
      
   
@@ -79,6 +81,7 @@ const SignUp = () => {
       evt.preventDefault()
       
       const newSignUp = {
+
         username: signUpForm.username.trim(),
         password: signUpForm.password.trim() 
       }
@@ -87,6 +90,8 @@ const SignUp = () => {
        postNewUser(newSignUp)
      
     }
+
+
   
   useEffect(() => {
       formSchema.isValid(signUpForm)
