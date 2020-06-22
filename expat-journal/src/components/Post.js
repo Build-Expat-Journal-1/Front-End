@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { axiosWithAuth } from "../utils/axiosAuth.js";
+import React from 'react'
 
 
 
@@ -18,8 +17,7 @@ const Post = (props) => {
             <p>{story.location}</p>
             <p>{story.date}</p>
             <p>{story.description}</p>
-            <button>Edit</button>
-            
+            <button>Edit</button>     
         </div>
     )
 }

@@ -16,14 +16,14 @@ const initalStory = {
 const Profile = (props) => {
 
     const [ stories, setStories ] = useState()
-    const [ newStory, setNewStory ] = useState(initalStory);
+    // const [ newStory, setNewStory ] = useState([initalStory]);
 
-   
 
 return (
     <div>
         <div className = 'profile-container'>
-            {/* <Post key={story.id} story={story} editStory={editStory}/> */}
+            {stories.map(story =>
+            <Post key={story.id} story={story}/>)}
         </div>
     </div>
     )

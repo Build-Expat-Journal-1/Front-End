@@ -12,13 +12,13 @@ import PrivateRoute from './utils/PrivateRoute'
 import Profile from './components/Profile'
 
 
-const initalStory = {
-  title: '',
-  location: '',
-  date: '',
-  description: '',
-  storyImage: ''
-}
+// const initalStory = {
+//   title: '',
+//   location: '',
+//   date: '',
+//   description: '',
+//   storyImage: ''
+// }
 
 
 function App() {

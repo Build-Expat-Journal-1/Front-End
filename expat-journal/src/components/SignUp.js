@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {TextField, Button} from '@material-ui/core'
 import formSchema from './Validation/schema'
-import { v4 as uuid } from 'uuid'
 import axios from 'axios'
 import * as Yup from 'yup'
 
@@ -25,7 +24,7 @@ const SignUp = () => {
     const [signUpForm, setSignUp] = useState(signUpInitialValue);
     const [signUpError, setSignUpError] = useState(errors) 
 
-    const [disabled, setDisabled] = useState(true) 
+    // const [disabled, setDisabled] = useState(true) 
 
   
      
