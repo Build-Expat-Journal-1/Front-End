@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { axiosWithAuth } from "../utils/axiosAuth.js";
 
 
 
@@ -7,24 +8,7 @@ import React, { useState } from 'react'
 const Post = (props) => {
 
     const [ editing, setEditing ] = useState(false);
-    const [ storyToEdit, setStoryToEdit ] = useState(initalStory);
 
-    const { story } = props
-    const id = storyToEdit.id
-
-   
-    const editStory = story => {
-        setEditing(true);
-        setStoryToEdit(story);
-    };
-
-    const saveEdit = e => {
-        axiosWithAuth()
-        .put(`/api/stories/${id}`, storyToEdit)
-        .then(res => 
-            console.log(res))
-        .catch(err => console.log(err))
-    }
 
 
     return (
