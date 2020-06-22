@@ -3,6 +3,8 @@ import { BrowserRouter as Route, Link, Switch } from 'react-router-dom';
 
 import './App.css';
 
+import PostContext from './contexts'
+
 import Login from './components/Login'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
@@ -10,10 +12,34 @@ import PrivateRoute from './utils/PrivateRoute'
 import Profile from './components/Profile'
 
 
+const initalStory = {
+  title: '',
+  location: '',
+  date: '',
+  description: '',
+  storyImage: ''
+}
+
 
 function App() {
 
+  const [ storyToEdit, setStoryToEdit ] = useState(initalStory);
+
+  const editStory = story => {
+      setEditing(true);
+      setStoryToEdit(story);
+  };
+
+  const saveEdit = e => {
+      axiosWithAuth()
+      .put(`/api/stories/${storyToEdit.id}`, storyToEdit)
+      .then(res => 
+          console.log(res))
+      .catch(err => console.log(err))
+  }
+
   return (
+
    <div>
       <ul>
           <li>
@@ -45,6 +71,7 @@ function App() {
 
     </Switch>
    </div>
+
   )
 }
 
