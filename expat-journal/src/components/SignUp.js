@@ -24,7 +24,7 @@ const SignUp = () => {
     const [signUpForm, setSignUp] = useState(signUpInitialValue);
     const [signUpError, setSignUpError] = useState(errors) 
 
-    // const [disabled, setDisabled] = useState(true) 
+    const [disabled, setDisabled] = useState(true) 
 
   
      
