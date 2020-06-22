@@ -99,8 +99,7 @@ const SignUp = (props) => {
   
         setSignUp({
           ...signUpForm, 
-          [name]:checked,
-          [name]:checked,
+         
         })
         
       
@@ -113,7 +112,7 @@ const SignUp = (props) => {
         first_name: signUpForm.first_name.trim(),
         last_name: signUpForm.last_name.trim(),
         email: signUpForm.email.trim(),
-         
+        password: signUpForm.password.trim() 
       }
        postNewUser(newSignUp)
      
@@ -148,12 +147,12 @@ const SignUp = (props) => {
                 <TextField  required id="first_name" label="First Name" variant="filled" />
                 <TextField  required id="last_name" label="Last Name" variant="filled" />
                 <TextField  required id="email" label="Email" variant='filled'/>
-                <TextField  required id="email" label="Password" variant='filled'/>
+                <TextField  required id="password" typw="password" label="Password" variant='filled'/>
             
             </div>
             <div className= 'submit-btn'>
 
-                  <Button variant="contained" disabled> Sumbit </Button>
+                  <Button variant="contained" disabled={disable}> Sumbit </Button>
 
             </div>
          
