@@ -30,7 +30,7 @@ const SignUp = (props) => {
   
   
       
-    const getOrder = () => {
+    const getUser = () => {
       axios.get('http://localhost:3000')
       .then(response => {
         
@@ -95,7 +95,7 @@ const SignUp = (props) => {
       
       const newSignUp = {
     
-        username: signUpForm.first_name.trim(),
+        username: signUpForm.username.trim(),
      
         password: signUpForm.password.trim() 
       }
@@ -105,7 +105,7 @@ const SignUp = (props) => {
    
     
     useEffect(() => {
-      getOrder()
+      getUser()
       
     }, [])
   
