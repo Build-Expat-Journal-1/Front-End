@@ -1,13 +1,12 @@
 import React from "react"
+import Post from './Post'
 
-import Card from './Post'
 
-
-const Home = (props) => {
+const Home = () => {
 
     return (
         <div>
-            <Card />
+            <Post />
         </div>
     )
 

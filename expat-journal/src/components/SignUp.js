@@ -150,7 +150,7 @@ const SignUp = (props) => {
 
 
     )
-   
+
 }
 
 
