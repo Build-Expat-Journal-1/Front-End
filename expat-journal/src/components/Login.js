@@ -33,9 +33,8 @@ const login = (e) => {
         axiosWithAuth()
             .post('/api/auth/login ', credentials)
             .then(res => 
-                console.log(res))
-                // window.localStorage.setItem('token', res.data.payload),
-                // history.push('/home'))
+                window.localStorage.setItem('token', res.data.payload),
+                history.push('/home'))
             .catch(err => console.log(err))
            
       };

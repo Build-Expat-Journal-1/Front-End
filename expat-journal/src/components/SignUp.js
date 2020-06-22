@@ -16,58 +16,47 @@ const signUpInitialValue = {
 const errors = {
   
     username:'',
-    password:'',
-    
-    
+    password:''   
+   
   }
 
-const SignUp = (props) => {
+const SignUp = () => {
 
-    const [newUser, setNewUser] = useState([]);
     const [signUpForm, setSignUp] = useState(signUpInitialValue);
     const [signUpError, setSignUpError] = useState(errors) 
-    const [disable, setDisabled] = useState(true) 
+    const [disabled, setDisabled] = useState(true) 
   
+     
   
-      
-    const getOrder = () => {
-      axios.get('http://localhost:3000')
-      .then(response => {
-        
-        setNewUser(response.data)
-      
+    const postNewUser = (newSignUp) => { 
+    console.log(newSignUp)
+     axios
+      .post('https://bw-expatjournal.herokuapp.com/api/auth/register', newSignUp)
+      .then(res => 
+          console.log(res))
+      .catch(err => console.log(err))
+      .finally(() => {
+        setSignUp(signUpInitialValue)
       })
-      .catch(err => {
-        debugger
-      })
-  }
-  
-  const postNewUser= newSignUp =>{
-    axios.post('https://http://localhost:3000/sign-up', newSignUp)
-    .then(res => {
-      setNewUser([...newUser, res.data])
-      
-    })
-    .catch(err => {
-      debugger
-    })
-    .finally(() => {
-      setSignUp(signUpInitialValue)
-    })
+     
+    };
     
-  }
+  
   
     const onInputChange = evt => {
-     
-     
-      const { name, value } = evt.target
-      
+
+      const name = evt.target.name
+      const value = evt.target.value
+
+
+    setSignUp({
+      ...signUpForm,
+      [name]: value 
+    })
     
       Yup
         .reach(formSchema, name)
-     
         .validate(value)
-        
         .then(() => {
           setSignUpError({
             ...signUpError,
@@ -82,10 +71,6 @@ const SignUp = (props) => {
           })
         })
   
-      setSignUp({
-        ...signUpForm,
-        [name]: value 
-      })
     }
   
     
@@ -94,24 +79,16 @@ const SignUp = (props) => {
       evt.preventDefault()
       
       const newSignUp = {
-    
-        username: signUpForm.first_name.trim(),
-     
+        username: signUpForm.username.trim(),
         password: signUpForm.password.trim() 
       }
+      console.log(newSignUp)
+
        postNewUser(newSignUp)
      
     }
-   
-    
-    useEffect(() => {
-      getOrder()
-      
-    }, [])
   
-    
-   
-    useEffect(() => {
+  useEffect(() => {
       formSchema.isValid(signUpForm)
       .then(valid => {
         setDisabled(!valid);
@@ -129,13 +106,12 @@ const SignUp = (props) => {
           
             <div style={{display:'flex', justifyContent:'center', alignContent:'center', flexDirection:'column'}} className="imput-container">
          
-                <TextField  onChange={onInputChange} required id="username" label="Username" type="username" variant="filled" />
-                <TextField   onChange={onInputChange} required id="password" type="password" label="Password" variant='filled'/>
+                <TextField name='username' value={signUpForm.username} onChange={onInputChange} required id="username" label="Username" type="username" variant="filled" />
+                <TextField name='password' value={signUpForm.password} onChange={onInputChange} required id="password" type="password" label="Password" variant='filled'/>
             
             </div>
             <div className= 'submit-btn'>
-
-                  <Button variant="contained" disabled > Sumbit </Button>
+                  <Button onClick={onSubmit} variant="contained"> Submit </Button>
 
             </div>
          

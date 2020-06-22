@@ -36,7 +36,7 @@ function App() {
             <SignUp />
           </Route>
           <PrivateRoute path='/home' component={Home}/>
-          <Route path='/profile' component={Profile}/>
+          <PrivateRoute path='/profile/:id' component={Profile}/>
     </Switch>
    </div>
   )
