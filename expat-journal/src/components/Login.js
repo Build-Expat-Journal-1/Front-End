@@ -34,7 +34,7 @@ const login = (e) => {
             .post('/api/auth/login ', credentials)
             .then(res => 
                 window.localStorage.setItem('token', res.data.payload),
-                history.push('/home'))
+                history.push('/profile'))
             .catch(err => console.log(err))
            
       };
