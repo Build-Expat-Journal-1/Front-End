@@ -102,9 +102,14 @@ const SignUp = () => {
     return(
       <div className="sign-up-container">
 
-     
-
           
+      <div className='error'>
+                
+                <div style={{color:'red'}}>{signUpError.username}</div>
+                <div style={{color:'red'}}>{signUpError.password}</div>
+              
+        </div>
+                
 
         <form onSubmit={onSubmit}  noValidate autoComplete="off">
           
