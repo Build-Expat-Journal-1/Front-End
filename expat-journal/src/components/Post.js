@@ -15,15 +15,6 @@ const useStyles = makeStyles({
         height: 275,
     }
 });
-
-
-
-
-
-
-
-
-
 const Post = (props) => {
 
     const { story } = props
@@ -31,21 +22,14 @@ const Post = (props) => {
 
 /// Gsap Animation    
     let userStory = useRef(null)
-
         useEffect(() =>{
-    
-    
-            let userStoryName= userStory.lastElementChild;
-            let tl= new TimelineLite()
-        
-        
-        
+         let userStoryName= userStory.lastElementChild;
+         let tl= new TimelineLite()
         tl.from(userStory,2,{opacity:0,ease:Power3.easeInOut}, .1)
-            .from(userStoryName, 1.2, {opacity:1,y:1280, ease:Power3.easeOut}, 0)
+          .from(userStoryName, 1.2, {opacity:1,y:1280, ease:Power3.easeOut}, 0)
             
         })
-      
-// End of Animation
+  // End of Animation
     return (
         <div className='card-container' ref= {element => userStory=element}>
         <Card variant='outlined' className={classes.root} > 

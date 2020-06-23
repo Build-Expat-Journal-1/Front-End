@@ -64,19 +64,12 @@ function App() {
   //     .catch(err => console.log(err))
   // }
 
+  // Gsap Animation
   let app = useRef(null);
-
- 
-useEffect(() =>{
-  
-  
-  
-  
-  TweenMax.to(app, 0, {css:{visibility:'visible'}})
- 
- 
- })
-
+       useEffect(() =>{
+        TweenMax.to(app, 0, {css:{visibility:'visible'}})
+      })
+// End of Animation
   return (
   <div ref= {element => app=element}>
    <AppBar className={classes.root} position='static'>
