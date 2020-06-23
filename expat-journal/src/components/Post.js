@@ -8,13 +8,18 @@ const Post = (props) => {
 
 
     return (
-        <div>
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center', alignContent:'center', flexWrap:'wrap'}}>
             <h2>{story.title}</h2>
-            <img src={story.storyImage}/>
-            <p>{story.location}</p>
-            <p>{story.date}</p>
-            <p>{story.description}</p>
-            <button onClick={() => props.editStory(story)}></button>
+            
+
+                <img style={{width:'80'}} src={story.storyImage}/>
+                
+                <p>{story.location}</p>
+                <p>{story.date}</p>
+                <p>{story.description}</p>
+
+    
+            <button onClick={() => props.editStory(story)}>Edit</button>
         </div>
     )
 }
