@@ -69,11 +69,7 @@ function App() {
  
 useEffect(() =>{
   
-  
-  
-  
   TweenMax.to(app, 0, {css:{visibility:'visible'}})
- 
  
  })
 
