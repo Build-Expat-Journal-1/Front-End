@@ -10,6 +10,7 @@ import Home from './components/Home'
 import SignUp from './components/SignUp'
 import PrivateRoute from './utils/PrivateRoute'
 import Profile from './components/Profile'
+import Dashboard from './components/Dashboard'
 
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -60,31 +61,31 @@ function App() {
  
 
   return (
-  <div>
-   <AppBar className={classes.root} position='static'>
-        <Toolbar>
-            <Button>
-                <Link to='/login' className={classes.links}>Login</Link>
-            </Button>
-            <Button>
-                <Link to='/sign-up' className={classes.links}>Sign Up</Link>
-            </Button>
-    
-              <Button>
-                <Link to='/home' className={classes.links}>Home</Link>
-             </Button>
-            <div className={classes.icon}>
-                <IconButton
-                  edge="end"
-                  aria-label="account of current user"
-                  color="inherit"
-                  onClick={() => history.push('/profile')}
-                >
-                      <AccountCircle />
-                </IconButton>
-          </div>
-      </Toolbar>
-    </AppBar>
+      <div>
+        <AppBar className={classes.root} position='static'>
+              <Toolbar>
+                  <Button>
+                      <Link to='/login' className={classes.links}>Login</Link>
+                  </Button>
+                  <Button>
+                      <Link to='/sign-up' className={classes.links}>Sign Up</Link>
+                  </Button>
+          
+                    <Button>
+                      <Link to='/home' className={classes.links}>Home</Link>
+                  </Button>
+                  <div className={classes.icon}>
+                      <IconButton
+                        edge="end"
+                        aria-label="account of current user"
+                        color="inherit"
+                        onClick={() => history.push('/profile')}
+                      >
+                            <AccountCircle />
+                      </IconButton>
+                </div>
+            </Toolbar>
+          </AppBar>
 
      <Switch>
           <Route path='/login' component={Login}>
@@ -98,9 +99,12 @@ function App() {
           <Route path='/home'>
             <Home/>
           </Route>
-    
-          <Route path='/profile' component={Profile}/>
-          <PrivateRoute path='/profile/:id' component={Profile}/>
+          <Route path='/profile' component={Profile}>
+            <Profile />
+          </Route>
+          <Route path='/dashboard' component={Dashboard}>
+            <Dashboard />
+          </Route>
 
     </Switch>
    </div>
