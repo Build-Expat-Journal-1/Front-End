@@ -10,6 +10,7 @@ import Home from './components/Home'
 import SignUp from './components/SignUp'
 import PrivateRoute from './utils/PrivateRoute'
 import Profile from './components/Profile'
+import Dashboard from './components/Dashboard'
 
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -98,9 +99,12 @@ function App() {
           <Route path='/home'>
             <Home/>
           </Route>
-    
-          <Route path='/profile' component={Profile}/>
-          <PrivateRoute path='/profile/:id' component={Profile}/>
+          <Route path='/profile' component={Profile}>
+            <Profile />
+          </Route>
+          <Route path='/dashboard' component={Dashboard}>
+            <Dashboard />
+          </Route>
 
     </Switch>
    </div>
