@@ -12,6 +12,7 @@ const Home = () => {
     useEffect(() => {
         axios.get(`https://bw-expatjournal.herokuapp.com/api/stories`)
         .then(response =>{
+          console.log(response)
          
           setStories(response.data)
         
@@ -25,7 +26,7 @@ const Home = () => {
     
   
     return (
-        <div>
+        <div className='feed'>
        
        {
         userStories.map(info => {
