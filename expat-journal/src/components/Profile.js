@@ -3,21 +3,32 @@ import Post from './Post.js'
 import { connect } from 'react-redux'
 import { addStory } from '../actions/addStory'
 import { axiosWithAuth } from "../utils/axiosAuth.js"
+
 import Modal from 'react-modal'
-import axios from 'axios'
+
+
+import EditStory from "./EditStory.js"
+import AdminPost from "./AdminPost.js"
 
 
 
+const initalStory = {
+    title: '',
+    location: '',
+    date: '',
+    description: '',
+    storyImage: ''
+}
 
 
 const Profile = (props) => {
 
     const [ userStories, setUserStories ] = useState([])
-    const [ newStory, setNewStory ] = useState({})
+    const [ newStory, setNewStory ] = useState(initalStory)
     const [ addingAStory, setAddingAStory ] = useState(false)
     const [modalOpen, setModalOpen]= useState(false)
     
-    useEffect(() => {
+useEffect(() => {
         console.log('i ran!')
         axiosWithAuth()
         .get(`https://bw-expatjournal.herokuapp.com/api/stories/${props.user.id}/my-stories`)
@@ -39,20 +50,25 @@ const Profile = (props) => {
     const addStory = e => {
         e.preventDefault();
         setAddingAStory(false)
-        props.addStory(newStory, props.user.id)
+        props.addStory(newStory)
     }
 
 return (
     <div className='feed'>
         
         {
-         userStories.map(story => {
-         return <Post key={story.id} story={story}/>
-            })
+
+            userStories.map(story => {
+            return (
+                    <div>
+                        <AdminPost key={story.id} story={story}/>  
+                    </div>
+            )})
         }
   
         <button  onClick={() => {setAddingAStory(true); setModalOpen(true)}}>Add A Story</button>
         <Modal isOpen={modalOpen}>
+
         {addingAStory && (<form onSubmit={addStory}>
             
             <legend>Add A Story</legend>
@@ -81,16 +97,15 @@ return (
                 onChange={onInputChange}
                 />
             <input
-                name='imageURL'
-                value={newStory.imageURL}
+                name='storyImage'
+                value={newStory.storyImage}
                 placeholder='imageURL'
                 onChange={onInputChange}
                 />
             <button onClick={()=> setModalOpen(false)}>Submit</button>
             
         </form>)}
-        </Modal>
-        
+       </Modal>
         
     </div>
     )

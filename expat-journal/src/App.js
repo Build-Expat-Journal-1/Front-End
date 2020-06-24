@@ -79,30 +79,31 @@ useEffect(() =>{
 
   return (
   <div ref= {element => app=element}>
-        <AppBar className={classes.root} position='static'>
-              <Toolbar>
+   
+      <AppBar className={classes.root} position='static'>
+            <Toolbar>
+                <Button>
+                    <Link to='/login' className={classes.links}>Login</Link>
+                </Button>
+                <Button>
+                    <Link to='/sign-up' className={classes.links}>Sign Up</Link>
+                </Button>
+        
                   <Button>
-                      <Link to='/login' className={classes.links}>Login</Link>
-                  </Button>
-                  <Button>
-                      <Link to='/sign-up' className={classes.links}>Sign Up</Link>
-                  </Button>
-          
-                    <Button>
-                      <Link to='/home' className={classes.links}>Home</Link>
-                  </Button>
-                  <div className={classes.icon}>
-                      <IconButton
-                        edge="end"
-                        aria-label="account of current user"
-                        color="inherit"
-                        onClick={() => history.push('/dashboard')}
-                      >
-                            <AccountCircle />
-                      </IconButton>
-                </div>
-            </Toolbar>
-          </AppBar>
+                    <Link to='/home' className={classes.links}>Home</Link>
+                </Button>
+                <div className={classes.icon}>
+                    <IconButton
+                      edge="end"
+                      aria-label="account of current user"
+                      color="inherit"
+                      onClick={() => history.push('/dashboard')}
+                    >
+                          <AccountCircle />
+                    </IconButton>
+              </div>
+          </Toolbar>
+        </AppBar>  
 
      <Switch>
           <Route path='/login' component={Login}>
@@ -116,6 +117,7 @@ useEffect(() =>{
           <Route path='/home'>
             <Home/>
           </Route>
+
           <Route path='/dashboard' component={Dashboard}>
             <Dashboard />
          </Route>
