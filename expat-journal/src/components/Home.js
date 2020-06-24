@@ -30,17 +30,13 @@ const Home = () => {
   
     return (
         <div className='feed'>
-       
-       {
-        userStories.map(info => {
-          return (
-            <Post story={info} />
-          )
-        })
-      }
-    
-    
-    
+              {
+                userStories.map(info => {
+                  return (
+                    <Post story={info} />
+                  )
+                })
+              }
         </div>
     )
 
