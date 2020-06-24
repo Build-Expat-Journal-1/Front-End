@@ -97,7 +97,7 @@ useEffect(() =>{
                       edge="end"
                       aria-label="account of current user"
                       color="inherit"
-                      onClick={() => history.push('/profile')}
+                      onClick={() => history.push('/dashboard')}
                     >
                           <AccountCircle />
                     </IconButton>
