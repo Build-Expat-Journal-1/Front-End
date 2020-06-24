@@ -9,6 +9,10 @@ import {TweenMax, TimelineLite, Power3} from 'gsap'
 import EditStory from './EditStory';
 import DeleteStory from './DeleteStory';
 
+import { connect } from 'react-redux'
+import { editStory } from '../actions/editStory'
+import { deleteStory } from '../actions/deleteStory'
+
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -65,4 +69,6 @@ const AdminPost = (props) => {
     )
 }
 
-export default AdminPost 
+
+
+export default AdminPost

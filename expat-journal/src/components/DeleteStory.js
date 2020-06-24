@@ -8,8 +8,7 @@ const DeleteStory = (props) => {
     
     const [ storytoDelete, setStoryToDelete ] = useState(props.story)
 
-    const deleteStory = (e) => {
-        e.preventDefault();
+    const deleteStory = () => {
         props.deleteStory(storytoDelete.id);
     }
     return (

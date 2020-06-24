@@ -30,12 +30,14 @@ const onInputChange = evt => {
     }
 
 const login = (e) => {
+        e.preventDefault();
+        history.push('/dashboard')
         axiosWithAuth()
             .post('/api/auth/login ', credentials)
             .then((res) => {
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', res.data.token);
-                history.push('/dashboard');
+                ;
             })
             .catch(err => console.log(err))
            

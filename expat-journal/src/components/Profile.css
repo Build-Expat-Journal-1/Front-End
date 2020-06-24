@@ -1,0 +1,7 @@
+.addStoryToolBar {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
