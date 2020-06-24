@@ -4,7 +4,7 @@ import {TextField, Button} from '@material-ui/core'
 import formSchema from './Validation/schema'
 import axios from 'axios'
 import * as Yup from 'yup'
-import Modal from 'react-modal'
+
 
 const signUpInitialValue = {
 

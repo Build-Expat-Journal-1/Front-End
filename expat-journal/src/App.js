@@ -104,9 +104,7 @@ useEffect(() =>{
             <Home/>
           </Route>
 
-          <Route path='/dashboard' component={Dashboard}>
-            <Dashboard />
-         </Route>
+          <PrivateRoute path='/dashboard' component={Dashboard}/>     
     </Switch>
 
    </div>
