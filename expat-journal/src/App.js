@@ -140,7 +140,6 @@ useEffect(() =>{
                 </div>
             </Toolbar>
           </AppBar>
->>>>>>> 950a614cf2f48b2c6b7096a84d8d6f85f860dca3
 
      <Switch>
           <Route path='/login' component={Login}>
@@ -154,16 +153,11 @@ useEffect(() =>{
           <Route path='/home'>
             <Home/>
           </Route>
-<<<<<<< HEAD
-    
-          <Route path='/profile' component={Profile}/>
-          <PrivateRoute path='/profile/:id' component={Profile}/>
 
-=======
           <Route path='/dashboard' component={Dashboard}>
             <Dashboard />
          </Route>
->>>>>>> 950a614cf2f48b2c6b7096a84d8d6f85f860dca3
+
     </Switch>
 
    </div>
