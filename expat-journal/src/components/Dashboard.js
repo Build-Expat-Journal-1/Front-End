@@ -29,7 +29,7 @@ export default function Dashboard () {
             <h1>Dashboard</h1>
             
             {userLoggedIn.map(user => {
-            return <Profile user={user}/>
+            return <Profile key={user.id} user={user}/>
             })
         }
             

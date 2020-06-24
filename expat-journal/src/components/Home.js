@@ -33,7 +33,7 @@ const Home = () => {
               {
                 userStories.map(info => {
                   return (
-                    <Post story={info} />
+                    <Post key={info.id} story={info} />
                   )
                 })
               }
