@@ -5,10 +5,13 @@ import { addStory } from '../actions/addStory'
 import { axiosWithAuth } from "../utils/axiosAuth.js"
 import axios from 'axios'
 
+<<<<<<< HEAD
+=======
 
 
 
 
+>>>>>>> 950a614cf2f48b2c6b7096a84d8d6f85f860dca3
 const Profile = (props) => {
 
     const [ userStories, setUserStories ] = useState([])
@@ -45,10 +48,12 @@ return (
     <div className='feed'>
         
         {
-            userStories.map(story => {
-                return <Post key={story.id} story={story}/>
+         userStories.map(story => {
+         return <Post key={story.id} story={story}/>
             })
         }
+<<<<<<< HEAD
+=======
 
         <button onClick={() => setAddingAStory(true)}>Add A Story</button>
 
@@ -88,6 +93,7 @@ return (
         </form>)}
         
         
+>>>>>>> 950a614cf2f48b2c6b7096a84d8d6f85f860dca3
     </div>
     )
 }
