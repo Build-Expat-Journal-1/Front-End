@@ -3,8 +3,10 @@ import Post from './Post.js'
 import { connect } from 'react-redux'
 import { addStory } from '../actions/addStory'
 import { axiosWithAuth } from "../utils/axiosAuth.js"
+
 import EditStory from "./EditStory.js"
 import AdminPost from "./AdminPost.js"
+
 
 const initalStory = {
     title: '',
@@ -13,7 +15,6 @@ const initalStory = {
     description: '',
     storyImage: ''
 }
-
 
 
 const Profile = (props) => {
@@ -52,6 +53,7 @@ return (
     <div className='feed'>
         
         {
+
             userStories.map(story => {
             return (
                     <div>
@@ -96,7 +98,6 @@ return (
                 />
             <button>Submit</button>
         </form>)}
-        
         
     </div>
     )
