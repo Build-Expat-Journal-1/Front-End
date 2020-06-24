@@ -3,20 +3,26 @@ import Post from './Post.js'
 import { connect } from 'react-redux'
 import { addStory } from '../actions/addStory'
 import { axiosWithAuth } from "../utils/axiosAuth.js"
-import axios from 'axios'
+import EditStory from "./EditStory.js"
 
-
+const initalStory = {
+    title: '',
+    location: '',
+    date: '',
+    description: '',
+    storyImage: ''
+}
 
 
 
 const Profile = (props) => {
 
     const [ userStories, setUserStories ] = useState([])
-    const [ newStory, setNewStory ] = useState({})
+    const [ newStory, setNewStory ] = useState(initalStory)
     const [ addingAStory, setAddingAStory ] = useState(false)
     
     
-    useEffect(() => {
+useEffect(() => {
         console.log('i ran!')
         axiosWithAuth()
         .get(`https://bw-expatjournal.herokuapp.com/api/stories/${props.user.id}/my-stories`)
@@ -38,7 +44,7 @@ const Profile = (props) => {
     const addStory = e => {
         e.preventDefault();
         setAddingAStory(false)
-        props.addStory(newStory, props.user.id)
+        props.addStory(newStory)
     }
 
 return (
@@ -46,11 +52,12 @@ return (
         
         {
             userStories.map(story => {
-                return <Post key={story.id} story={story}/>
+            return <Post key={story.id} story={story}/>,
+            <EditStory key={story.id} story={story}/>
             })
         }
 
-        <button onClick={() => setAddingAStory(true)}>Add A Story</button>
+    <button onClick={() => setAddingAStory(true)}>Add A Story</button>
 
         {addingAStory && (<form onSubmit={addStory}>
             <legend>Add A Story</legend>
@@ -79,8 +86,8 @@ return (
                 onChange={onInputChange}
                 />
             <input
-                name='imageURL'
-                value={newStory.imageURL}
+                name='storyImage'
+                value={newStory.storyImage}
                 placeholder='imageURL'
                 onChange={onInputChange}
                 />

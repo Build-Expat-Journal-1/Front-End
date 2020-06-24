@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {TweenMax, TimelineLite, Power3} from 'gsap'
+
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -17,13 +18,6 @@ const useStyles = makeStyles({
 });
 
 
-
-
-
-
-
-
-
 const Post = (props) => {
 
     const { story } = props
@@ -33,22 +27,18 @@ const Post = (props) => {
     let userStory = useRef(null)
 
         useEffect(() =>{
-    
-    
             let userStoryName= userStory.lastElementChild;
             let tl= new TimelineLite()
-        
-        
-        
         tl.from(userStory,2,{opacity:0,ease:Power3.easeInOut}, .1)
             .from(userStoryName, 1.2, {opacity:1,y:1280, ease:Power3.easeOut}, 0)
             
         })
       
 // End of Animation
+
     return (
         <div className='card-container' ref= {element => userStory=element}>
-        <Card variant='outlined' className={classes.root} > 
+        <Card variant='outlined' className={classes.root}> 
             <CardHeader
             title={story.title}
             subheader={story.location}/>
