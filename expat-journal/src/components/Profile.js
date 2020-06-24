@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { connect } from 'react-redux'
 import { axiosWithAuth } from "../utils/axiosAuth.js"
 
-import Modal from 'react-modal'
-
-
-import EditStory from "./EditStory.js"
 import AdminPost from "./AdminPost.js"
 import AddStory from './AddStory.js'
-
-import { editStory } from '../actions/editStory'
-import { deleteStory } from "../actions/deleteStory.js"
 
 import './Profile.css'
 

@@ -9,14 +9,13 @@ import Login from './components/Login'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import PrivateRoute from './utils/PrivateRoute'
-import Profile from './components/Profile'
 import Dashboard from './components/Dashboard'
 
-import {TweenMax, TimelineLite, Power3} from 'gsap'
+import {TweenMax } from 'gsap'
 
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
-import { Toolbar, Typography, Button, IconButton } from '@material-ui/core';
+import { Toolbar, Button, IconButton } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
@@ -51,7 +50,7 @@ function App() {
   
   const classes = useStyles();
   const history = useHistory();
-  const [modalOpen, setModalOpen]= useState(true)
+  const [ modalOpen, setModalOpen ]= useState(false)
   
 
   // Gsap Animation
@@ -98,7 +97,7 @@ useEffect(() =>{
           </Route>
 
           <Route path='/sign-up' component={SignUp}>
-            <SignUp setModalOpen={setModalOpen} onClick={()=> setModalOpen(true)} />
+            <SignUp onClick={()=> setModalOpen(true)} />
           </Route>
     
           <Route path='/home'>

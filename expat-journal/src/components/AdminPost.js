@@ -5,13 +5,10 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {TweenMax, TimelineLite, Power3} from 'gsap'
+import { TimelineLite, Power3 } from 'gsap'
 import EditStory from './EditStory';
 import DeleteStory from './DeleteStory';
 
-import { connect } from 'react-redux'
-import { editStory } from '../actions/editStory'
-import { deleteStory } from '../actions/deleteStory'
 
 const useStyles = makeStyles({
     root: {
@@ -38,7 +35,7 @@ const AdminPost = (props) => {
         tl.from(userStory,2,{opacity:0,ease:Power3.easeInOut}, .1)
             .from(userStoryName, 1.2, {opacity:1,y:1280, ease:Power3.easeOut}, 0)
             
-        })
+        }, [])
       
 //End of Animation
 

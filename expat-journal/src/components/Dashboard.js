@@ -22,7 +22,7 @@ export default function Dashboard () {
             setUserLoggedIn(currentUser)
         })
         .catch(err => console.log(err))
-    }, [])
+    },[usernameInStorage])
 
     return (
         <div>

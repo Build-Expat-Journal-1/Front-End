@@ -24,8 +24,7 @@ const SignUp = (props) => {
 
     const [signUpForm, setSignUp] = useState(signUpInitialValue);
     const [signUpError, setSignUpError] = useState(errors) 
-    const [modalOpen, setModalOpen]= useState(false)
-    const [disabled, setDisabled] = useState(true)   
+    const [ disabled, setDisabled ] = useState(true)   
     
     const history = useHistory()
   
@@ -96,12 +95,11 @@ const SignUp = (props) => {
       .then(valid => {
         setDisabled(!valid);
       })
-    }, [signUpForm])
+    }, [signUpForm, setDisabled])
 
     return(
       <div className="sign-up-container">
-     
-     <Modal isOpen={true}>
+    
           
       <div className='error'>
                 
@@ -121,13 +119,11 @@ const SignUp = (props) => {
             </div>
             <div className= 'submit-btn'>
               <Link to='/'>
-                  <Button onClick={onSubmit} isOpen={false} variant="contained"> Submit </Button>
+                  <Button onClick={onSubmit} variant="contained"> Submit </Button>
                 </Link>
             </div>
          
         </form>
-
-        </Modal>
 
       </div>
 

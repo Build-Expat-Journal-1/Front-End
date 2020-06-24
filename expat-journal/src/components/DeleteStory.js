@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 const DeleteStory = (props) => {
 
     
-    const [ storytoDelete, setStoryToDelete ] = useState(props.story)
+    const [ storytoDelete ] = useState(props.story)
 
     const deleteStory = () => {
         props.deleteStory(storytoDelete.id);

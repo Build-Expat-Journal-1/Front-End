@@ -5,7 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {TweenMax, TimelineLite, Power3} from 'gsap'
+import { TimelineLite, Power3} from 'gsap'
 
 const useStyles = makeStyles({
     root: {
