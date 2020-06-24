@@ -3,6 +3,9 @@ import { addStory } from '../actions/addStory'
 import { Fab, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import { connect } from 'react-redux'
+import Modal from 'react-modal'
+
+import './AddStory.css'
 
 
 
@@ -16,7 +19,6 @@ const initalStory = {
 
 const AddStory = (props) => {
     const [ newStory, setNewStory ] = useState(initalStory)
-    const [ addingAStory, setAddingAStory ] = useState(false)
     const [ modalOpen, setModalOpen ]= useState(false)
 
     const onInputChange = evt => {
@@ -29,25 +31,29 @@ const AddStory = (props) => {
         })
     }
 
-    const addStory = e => {
+    const addStory = (e) => {
         e.preventDefault();
-        setAddingAStory(false)
         props.addStory(newStory)
+        setNewStory(initalStory)
+        setModalOpen(false)
+    }
+
+    const closeModal = e => {
+        e.preventDefault();
+        setModalOpen(false)
     }
 
 
 
     return (
         <Fab 
-            onClick={() => {setAddingAStory(true)}} 
+            onClick={() => {setModalOpen(true)}} 
                 color="primary" 
                 aria-label="add">
             <AddIcon />
 
-            { addingAStory && 
-
-            (<form className='addStoryForm' onSubmit={addStory}>
-                
+        <Modal className='addStoryModal' isOpen={modalOpen}>  
+                <form className='addStoryForm'>
                 <legend>Add A Story</legend>
                 <TextField 
                     name='title'
@@ -79,11 +85,11 @@ const AddStory = (props) => {
                     placeholder='imageURL'
                     onChange={onInputChange}
                     />
-                <button onClick={()=> setModalOpen(false)}>Submit</button>
-                
-            </form>)
-            }
-        </Fab>
+                <button onClick={addStory}>Submit</button>
+                <button onClick={() => closeModal()}>Close</button>
+            </form>
+        </Modal>        
+    </Fab>
          )
         }
 

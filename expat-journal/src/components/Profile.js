@@ -20,9 +20,6 @@ import './Profile.css'
 const Profile = (props) => {
 
     const [ userStories, setUserStories ] = useState([])
-   
-    
-    
         useEffect(() => {
                     axiosWithAuth()
                     .get(`https://bw-expatjournal.herokuapp.com/api/stories/${props.user.id}/my-stories`)

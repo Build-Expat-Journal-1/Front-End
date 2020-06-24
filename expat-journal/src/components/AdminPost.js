@@ -69,12 +69,6 @@ const AdminPost = (props) => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        editStory: state.editStoryReducer.story,
-        deleteStory: state.deleteStoryReducer.story
-    }
 
-}
 
-export default connect(mapStateToProps, {editStory, deleteStory})(AdminPost)
+export default AdminPost

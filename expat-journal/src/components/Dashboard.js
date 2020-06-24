@@ -26,12 +26,10 @@ export default function Dashboard () {
 
     return (
         <div>
-            
             {userLoggedIn.map(user => {
             return <Profile key={user.id} user={user}/>
             })
-        }
-            
+            }   
 
         </div>
     )

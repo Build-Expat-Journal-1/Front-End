@@ -1,6 +1,18 @@
 .addStoryForm {
+    display: flex;
+    flex-direction: column;
+    width: 40rem;
+    margin: auto;
 
-    width: 
+}
 
-
+.addStoryModal {
+    width: 50rem;
+    margin: auto;
+    margin-top: 10%;
+    opacity: 100;
+    border: solid black 1px;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: white;
 }
