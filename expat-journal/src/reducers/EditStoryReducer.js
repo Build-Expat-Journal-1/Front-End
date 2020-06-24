@@ -1,34 +1,31 @@
-import { 
-    ADD_STORY_START,
-    ADD_STORY_SUCCESS,
-    ADD_STORY_FAIL
-} from '../actions/addStory';
+import {
+    EDIT_STORY_START,
+    EDIT_STORY_SUCCESS,
+    EDIT_STORY_FAIL
+} from '../actions/editStory'
 
 const initalState = {
-    stories: [],
+    story: {},
     error: '',
     isFetching: false
-};
+}
 
-export const addStoryReducer = (state = initalState, action) => {
+export const editStoryReducer = ( state=initalState, action) => {
     switch(action.type){
-        case ADD_STORY_START:
+        case EDIT_STORY_START:
             return {
                 ...state,
                 isFetching: true,
                 error: ''
             };
-        case ADD_STORY_SUCCESS:
+        case EDIT_STORY_SUCCESS:
             return {
                 ...state,
-                stories: [
-                    ...state.stories,
-                    action.payload
-                ],
+                story: action.payload,
                 isFetching: false,
                 error: ''
             };
-        case ADD_STORY_FAIL:
+        case EDIT_STORY_FAIL:
             return {
                 ...state,
                 error: action.payload

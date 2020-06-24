@@ -3,23 +3,28 @@ import Post from './Post.js'
 import { connect } from 'react-redux'
 import { addStory } from '../actions/addStory'
 import { axiosWithAuth } from "../utils/axiosAuth.js"
-import axios from 'axios'
 
-<<<<<<< HEAD
-=======
-
+import EditStory from "./EditStory.js"
+import AdminPost from "./AdminPost.js"
 
 
+const initalStory = {
+    title: '',
+    location: '',
+    date: '',
+    description: '',
+    storyImage: ''
+}
 
->>>>>>> 950a614cf2f48b2c6b7096a84d8d6f85f860dca3
+
 const Profile = (props) => {
 
     const [ userStories, setUserStories ] = useState([])
-    const [ newStory, setNewStory ] = useState({})
+    const [ newStory, setNewStory ] = useState(initalStory)
     const [ addingAStory, setAddingAStory ] = useState(false)
     
     
-    useEffect(() => {
+useEffect(() => {
         console.log('i ran!')
         axiosWithAuth()
         .get(`https://bw-expatjournal.herokuapp.com/api/stories/${props.user.id}/my-stories`)
@@ -41,21 +46,23 @@ const Profile = (props) => {
     const addStory = e => {
         e.preventDefault();
         setAddingAStory(false)
-        props.addStory(newStory, props.user.id)
+        props.addStory(newStory)
     }
 
 return (
     <div className='feed'>
         
         {
-         userStories.map(story => {
-         return <Post key={story.id} story={story}/>
-            })
-        }
-<<<<<<< HEAD
-=======
 
-        <button onClick={() => setAddingAStory(true)}>Add A Story</button>
+            userStories.map(story => {
+            return (
+                    <div>
+                        <AdminPost key={story.id} story={story}/>  
+                    </div>
+            )})
+        }
+
+    <button onClick={() => setAddingAStory(true)}>Add A Story</button>
 
         {addingAStory && (<form onSubmit={addStory}>
             <legend>Add A Story</legend>
@@ -84,16 +91,14 @@ return (
                 onChange={onInputChange}
                 />
             <input
-                name='imageURL'
-                value={newStory.imageURL}
+                name='storyImage'
+                value={newStory.storyImage}
                 placeholder='imageURL'
                 onChange={onInputChange}
                 />
             <button>Submit</button>
         </form>)}
         
-        
->>>>>>> 950a614cf2f48b2c6b7096a84d8d6f85f860dca3
     </div>
     )
 }

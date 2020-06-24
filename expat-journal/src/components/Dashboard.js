@@ -26,10 +26,10 @@ export default function Dashboard () {
 
     return (
         <div>
-            <h1>Dashboard</h1>
+            <h1>My Stories</h1>
             
             {userLoggedIn.map(user => {
-            return <Profile user={user}/>
+            return <Profile key={user.id} user={user}/>
             })
         }
             
