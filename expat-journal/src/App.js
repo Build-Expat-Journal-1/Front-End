@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef,useEffect} from 'react';
 import { BrowserRouter as Route, Link, Switch, useHistory } from 'react-router-dom';
 
 import './App.css';
@@ -11,6 +11,8 @@ import SignUp from './components/SignUp'
 import PrivateRoute from './utils/PrivateRoute'
 import Profile from './components/Profile'
 import Dashboard from './components/Dashboard'
+
+import {TweenMax, TimelineLite, Power3} from 'gsap'
 
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -25,6 +27,13 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 //   description: '',
 //   storyImage: ''
 // }
+
+
+
+
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,10 +67,17 @@ function App() {
   //     .catch(err => console.log(err))
   // }
 
+  let app = useRef(null);
+
  
+useEffect(() =>{
+  
+  TweenMax.to(app, 0, {css:{visibility:'visible'}})
+ 
+ })
 
   return (
-      <div>
+  <div ref= {element => app=element}>
         <AppBar className={classes.root} position='static'>
               <Toolbar>
                   <Button>
@@ -101,9 +117,9 @@ function App() {
           </Route>
           <Route path='/dashboard' component={Dashboard}>
             <Dashboard />
-          </Route>
-
+         </Route>
     </Switch>
+
    </div>
 
   )
