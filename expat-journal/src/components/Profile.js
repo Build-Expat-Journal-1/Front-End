@@ -7,6 +7,9 @@ import { axiosWithAuth } from "../utils/axiosAuth.js"
 import EditStory from "./EditStory.js"
 import AdminPost from "./AdminPost.js"
 
+import { editStory } from '../actions/editStory'
+import { deleteStory } from "../actions/deleteStory.js"
+
 
 const initalStory = {
     title: '',
@@ -21,8 +24,7 @@ const Profile = (props) => {
 
     const [ userStories, setUserStories ] = useState([])
     const [ newStory, setNewStory ] = useState(initalStory)
-    const [ addingAStory, setAddingAStory ] = useState(false)
-    
+    const [ addingAStory, setAddingAStory ] = useState(false)   
     
 useEffect(() => {
         console.log('i ran!')
@@ -31,7 +33,7 @@ useEffect(() => {
         .then(res =>
             setUserStories(res.data))
         .catch(err => console.log(err))
-    }, [props])
+    }, [ props.editStory, props.deleteStory ])
 
 
     const onInputChange = evt => {
@@ -103,5 +105,13 @@ return (
     )
 }
 
+const mapStateToProps = state => {
+    return {
+        editStory: state.editStoryReducer.story,
+        deleteStory: state.deleteStoryReducer.story,
+        addStory: state.addStoryReducer.story
+    }
 
-export default connect(null, { addStory })(Profile);
+}
+
+export default connect(mapStateToProps, {addStory})(Profile)
