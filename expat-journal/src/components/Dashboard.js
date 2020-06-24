@@ -16,11 +16,9 @@ export default function Dashboard () {
         axiosWithAuth()
         .get(`https://bw-expatjournal.herokuapp.com/api/users`)
         .then(res => {
-            console.log(res)
             const currentUser = res.data.users.filter(user => (
                 user.username === usernameInStorage[0]
             ),[0]);
-            console.log(currentUser)
             setUserLoggedIn(currentUser)
         })
         .catch(err => console.log(err))
