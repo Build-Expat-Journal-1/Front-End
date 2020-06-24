@@ -54,6 +54,7 @@ const login = (e) => {
                 <TextField 
                 id='outlined-basic' 
                 label='PASSWORD' 
+                type="password"
                 variant='outlined'
                 name='password'
                 value={credentials.password}

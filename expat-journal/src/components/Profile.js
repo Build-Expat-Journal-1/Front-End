@@ -4,11 +4,15 @@ import { connect } from 'react-redux'
 import { addStory } from '../actions/addStory'
 import { axiosWithAuth } from "../utils/axiosAuth.js"
 
+import Modal from 'react-modal'
+
+
 import EditStory from "./EditStory.js"
 import AdminPost from "./AdminPost.js"
 
 import { editStory } from '../actions/editStory'
 import { deleteStory } from "../actions/deleteStory.js"
+
 
 
 const initalStory = {
@@ -24,7 +28,8 @@ const Profile = (props) => {
 
     const [ userStories, setUserStories ] = useState([])
     const [ newStory, setNewStory ] = useState(initalStory)
-    const [ addingAStory, setAddingAStory ] = useState(false)   
+    const [ addingAStory, setAddingAStory ] = useState(false)
+    const [modalOpen, setModalOpen]= useState(false)
     
 useEffect(() => {
         console.log('i ran!')
@@ -63,10 +68,12 @@ return (
                     </div>
             )})
         }
-
-    <button onClick={() => setAddingAStory(true)}>Add A Story</button>
+  
+        <button  onClick={() => {setAddingAStory(true); setModalOpen(true)}}>Add A Story</button>
+        <Modal isOpen={modalOpen}>
 
         {addingAStory && (<form onSubmit={addStory}>
+            
             <legend>Add A Story</legend>
             <input 
                 name='title'
@@ -98,8 +105,10 @@ return (
                 placeholder='imageURL'
                 onChange={onInputChange}
                 />
-            <button>Submit</button>
+            <button onClick={()=> setModalOpen(false)}>Submit</button>
+            
         </form>)}
+       </Modal>
         
     </div>
     )

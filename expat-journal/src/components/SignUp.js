@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 import {TextField, Button} from '@material-ui/core'
 import formSchema from './Validation/schema'
 import axios from 'axios'
 import * as Yup from 'yup'
-
+import Modal from 'react-modal'
 
 const signUpInitialValue = {
 
@@ -23,11 +24,8 @@ const SignUp = () => {
 
     const [signUpForm, setSignUp] = useState(signUpInitialValue);
     const [signUpError, setSignUpError] = useState(errors) 
-
-    const [disabled, setDisabled] = useState(true) 
-
-  
-     
+    const [modalOpen, setModalOpen]= useState(false)
+    const [disabled, setDisabled] = useState(true)    
   
     const postNewUser = (newSignUp) => { 
     console.log(newSignUp)
@@ -41,9 +39,8 @@ const SignUp = () => {
       })
      
     };
-    
   
-  
+   
     const onInputChange = evt => {
 
       const name = evt.target.name
@@ -87,6 +84,7 @@ const SignUp = () => {
       console.log(newSignUp)
 
        postNewUser(newSignUp)
+       setModalOpen()
      
     }
 
@@ -101,7 +99,8 @@ const SignUp = () => {
 
     return(
       <div className="sign-up-container">
-
+     
+     <Modal isOpen={true}>
           
       <div className='error'>
                 
@@ -110,7 +109,7 @@ const SignUp = () => {
               
         </div>
                 
-
+      
         <form onSubmit={onSubmit}  noValidate autoComplete="off">
           
             <div style={{display:'flex', justifyContent:'center', alignContent:'center', flexDirection:'column'}} className="imput-container">
@@ -120,13 +119,14 @@ const SignUp = () => {
             
             </div>
             <div className= 'submit-btn'>
-                  <Button onClick={onSubmit} variant="contained"> Submit </Button>
-
+              <Link to='/login'>
+                  <Button isOpen={false} variant="contained"> Submit </Button>
+            </Link>
             </div>
          
         </form>
 
-
+        </Modal>
 
       </div>
 

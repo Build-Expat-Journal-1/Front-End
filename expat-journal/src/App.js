@@ -1,4 +1,4 @@
-import React, {useRef,useEffect} from 'react';
+import React, {useRef,useEffect,useState} from 'react';
 import { BrowserRouter as Route, Link, Switch, useHistory } from 'react-router-dom';
 
 import './App.css';
@@ -51,7 +51,7 @@ function App() {
   
   const classes = useStyles();
   const history = useHistory();
-
+  const [modalOpen, setModalOpen]= useState(true)
   // const [ storyToEdit, setStoryToEdit ] = useState(initalStory);
 
   // const editStory = story => {
@@ -79,7 +79,7 @@ useEffect(() =>{
 
   return (
   <div ref= {element => app=element}>
-    
+   
       <AppBar className={classes.root} position='static'>
             <Toolbar>
                 <Button>
@@ -104,13 +104,14 @@ useEffect(() =>{
               </div>
           </Toolbar>
         </AppBar>  
+
      <Switch>
           <Route path='/login' component={Login}>
             <Login />
           </Route>
 
           <Route path='/sign-up' component={SignUp}>
-            <SignUp />
+            <SignUp onClick={()=> setModalOpen(true)} />
           </Route>
     
           <Route path='/home'>
