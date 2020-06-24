@@ -6,6 +6,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {TweenMax, TimelineLite, Power3} from 'gsap'
+import EditStory from './EditStory';
+import DeleteStory from './DeleteStory';
 
 const useStyles = makeStyles({
     root: {
@@ -18,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 
-const Post = (props) => {
+const AdminPost = (props) => {
 
     const { story } = props
     const classes = useStyles();
@@ -55,10 +57,12 @@ const Post = (props) => {
                 <Typography variant="body2" color="textSecondary" component="p">
                 {story.description}
                 </Typography>
+                <EditStory story={story}/>
+                <DeleteStory story={story}/>
             </CardContent>
         </Card>
         </div>
     )
 }
 
-export default Post 
+export default AdminPost 

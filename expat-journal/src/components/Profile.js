@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { addStory } from '../actions/addStory'
 import { axiosWithAuth } from "../utils/axiosAuth.js"
 import EditStory from "./EditStory.js"
+import AdminPost from "./AdminPost.js"
 
 const initalStory = {
     title: '',
@@ -52,9 +53,11 @@ return (
         
         {
             userStories.map(story => {
-            return <Post key={story.id} story={story}/>,
-            <EditStory key={story.id} story={story}/>
-            })
+            return (
+                    <div>
+                        <AdminPost key={story.id} story={story}/>  
+                    </div>
+            )})
         }
 
     <button onClick={() => setAddingAStory(true)}>Add A Story</button>

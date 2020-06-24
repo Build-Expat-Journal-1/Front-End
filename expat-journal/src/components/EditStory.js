@@ -19,8 +19,8 @@ const EditStory = props => {
 
   const editStory = e => {
     e.preventDefault();
-    setEditing(false)
-    props.editStory(storytoEdit, storytoEdit.id)
+    setEditing(false);
+    props.editStory(storytoEdit, storytoEdit.id);
 }
 
     return (
