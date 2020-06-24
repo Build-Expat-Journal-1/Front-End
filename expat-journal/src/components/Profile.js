@@ -3,21 +3,19 @@ import Post from './Post.js'
 import { connect } from 'react-redux'
 import { addStory } from '../actions/addStory'
 import { axiosWithAuth } from "../utils/axiosAuth.js"
+import Modal from 'react-modal'
 import axios from 'axios'
 
-<<<<<<< HEAD
-=======
 
 
 
 
->>>>>>> 950a614cf2f48b2c6b7096a84d8d6f85f860dca3
 const Profile = (props) => {
 
     const [ userStories, setUserStories ] = useState([])
     const [ newStory, setNewStory ] = useState({})
     const [ addingAStory, setAddingAStory ] = useState(false)
-    
+    const [modalOpen, setModalOpen]= useState(false)
     
     useEffect(() => {
         console.log('i ran!')
@@ -52,12 +50,11 @@ return (
          return <Post key={story.id} story={story}/>
             })
         }
-<<<<<<< HEAD
-=======
-
-        <button onClick={() => setAddingAStory(true)}>Add A Story</button>
-
+  
+        <button  onClick={() => {setAddingAStory(true); setModalOpen(true)}}>Add A Story</button>
+        <Modal isOpen={modalOpen}>
         {addingAStory && (<form onSubmit={addStory}>
+            
             <legend>Add A Story</legend>
             <input 
                 name='title'
@@ -89,11 +86,12 @@ return (
                 placeholder='imageURL'
                 onChange={onInputChange}
                 />
-            <button>Submit</button>
+            <button onClick={()=> setModalOpen(false)}>Submit</button>
+            
         </form>)}
+        </Modal>
         
         
->>>>>>> 950a614cf2f48b2c6b7096a84d8d6f85f860dca3
     </div>
     )
 }
