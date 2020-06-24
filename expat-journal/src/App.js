@@ -52,20 +52,7 @@ function App() {
   const classes = useStyles();
   const history = useHistory();
   const [modalOpen, setModalOpen]= useState(true)
-  // const [ storyToEdit, setStoryToEdit ] = useState(initalStory);
-
-  // const editStory = story => {
-  //     setEditing(true);
-  //     setStoryToEdit(story);
-  // };
-
-  // const saveEdit = e => {
-  //     axiosWithAuth()
-  //     .put(`/api/stories/${storyToEdit.id}`, storyToEdit)
-  //     .then(res => 
-  //         console.log(res))
-  //     .catch(err => console.log(err))
-  // }
+  
 
   // Gsap Animation
   let app = useRef(null);
@@ -83,7 +70,7 @@ useEffect(() =>{
       <AppBar className={classes.root} position='static'>
             <Toolbar>
                 <Button>
-                    <Link to='/login' className={classes.links}>Login</Link>
+                    <Link to='/' className={classes.links}>Login</Link>
                 </Button>
                 <Button>
                     <Link to='/sign-up' className={classes.links}>Sign Up</Link>
@@ -106,12 +93,12 @@ useEffect(() =>{
         </AppBar>  
 
      <Switch>
-          <Route path='/login' component={Login}>
+          <Route exact path='/' component={Login}>
             <Login />
           </Route>
 
           <Route path='/sign-up' component={SignUp}>
-            <SignUp onClick={()=> setModalOpen(true)} />
+            <SignUp setModalOpen={setModalOpen} onClick={()=> setModalOpen(true)} />
           </Route>
     
           <Route path='/home'>

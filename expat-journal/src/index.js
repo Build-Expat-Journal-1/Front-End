@@ -5,6 +5,8 @@ import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers'
+import { createBrowserHistory } from 'history'
+
 
 
 import './index.css';
@@ -16,13 +18,15 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
+const history = createBrowserHistory()
+
 
 const rootElement = document.getElementById('root')
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
           <App />
       </Router>
     </Provider>

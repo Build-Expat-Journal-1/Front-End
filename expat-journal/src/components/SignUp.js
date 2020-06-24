@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {TextField, Button} from '@material-ui/core'
 import formSchema from './Validation/schema'
 import axios from 'axios'
@@ -20,12 +20,15 @@ const errors = {
    
   }
 
-const SignUp = () => {
+const SignUp = (props) => {
 
     const [signUpForm, setSignUp] = useState(signUpInitialValue);
     const [signUpError, setSignUpError] = useState(errors) 
     const [modalOpen, setModalOpen]= useState(false)
-    const [disabled, setDisabled] = useState(true)    
+    const [disabled, setDisabled] = useState(true)   
+    
+    const history = useHistory()
+  
   
     const postNewUser = (newSignUp) => { 
     console.log(newSignUp)
@@ -36,6 +39,7 @@ const SignUp = () => {
       .catch(err => console.log(err))
       .finally(() => {
         setSignUp(signUpInitialValue)
+        history.push('/')
       })
      
     };
@@ -75,17 +79,14 @@ const SignUp = () => {
     
     const onSubmit = evt => {
       evt.preventDefault()
-      
       const newSignUp = {
 
         username: signUpForm.username.trim(),
         password: signUpForm.password.trim() 
       }
       console.log(newSignUp)
-
        postNewUser(newSignUp)
-       setModalOpen()
-     
+       history.push('/')    
     }
 
 
@@ -110,7 +111,7 @@ const SignUp = () => {
         </div>
                 
       
-        <form onSubmit={onSubmit}  noValidate autoComplete="off">
+        <form noValidate autoComplete="off">
           
             <div style={{display:'flex', justifyContent:'center', alignContent:'center', flexDirection:'column'}} className="imput-container">
          
@@ -119,9 +120,9 @@ const SignUp = () => {
             
             </div>
             <div className= 'submit-btn'>
-              <Link to='/login'>
-                  <Button isOpen={false} variant="contained"> Submit </Button>
-            </Link>
+              <Link to='/'>
+                  <Button onClick={onSubmit} isOpen={false} variant="contained"> Submit </Button>
+                </Link>
             </div>
          
         </form>
