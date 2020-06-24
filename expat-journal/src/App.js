@@ -37,6 +37,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    background: `#E5989B`
   },
   links: {
     textDecoration: 'none',

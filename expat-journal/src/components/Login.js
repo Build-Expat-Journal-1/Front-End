@@ -63,7 +63,7 @@ const login = (e) => {
                 value={credentials.password}
                 onChange={onInputChange}/>
 
-                <Button onClick={login} variant='contained' color='primary'>
+                <Button onClick={login} variant='contained'>
                     Login
                 </Button>
         </form>
