@@ -79,7 +79,7 @@ function App() {
                         edge="end"
                         aria-label="account of current user"
                         color="inherit"
-                        onClick={() => history.push('/profile')}
+                        onClick={() => history.push('/dashboard')}
                       >
                             <AccountCircle />
                       </IconButton>
@@ -98,9 +98,6 @@ function App() {
     
           <Route path='/home'>
             <Home/>
-          </Route>
-          <Route path='/profile' component={Profile}>
-            <Profile />
           </Route>
           <Route path='/dashboard' component={Dashboard}>
             <Dashboard />
