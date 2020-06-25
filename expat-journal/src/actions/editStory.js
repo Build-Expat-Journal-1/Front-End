@@ -11,7 +11,7 @@ export const editStory = (story, storyID) => dispatch => {
     axiosWithAuth()
     .put(`https://bw-expatjournal.herokuapp.com/api/stories/${storyID}`, story)
     .then(res => {
-        console.log('i edited the story!')
+        console.log(res)
         dispatch({type: EDIT_STORY_SUCCESS, payload: res.data})
     })
     .catch(err => {

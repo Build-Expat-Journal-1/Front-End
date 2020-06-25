@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosAuth'
+import { connect } from 'react-redux'
 import Profile from './Profile'
 
 const initalUser = [{
@@ -8,7 +9,7 @@ const initalUser = [{
     id: 2
 }]
 
-export default function Dashboard () {
+function Dashboard () {
     const [ userLoggedIn, setUserLoggedIn ] = useState(initalUser)
     const usernameInStorage = useState(window.localStorage.getItem('username'))
 
@@ -22,7 +23,7 @@ export default function Dashboard () {
             setUserLoggedIn(currentUser)
         })
         .catch(err => console.log(err))
-    }, [])
+    },[])
 
     return (
         <div>
@@ -35,3 +36,10 @@ export default function Dashboard () {
     )
 
 }
+
+
+
+
+
+
+export default Dashboard
