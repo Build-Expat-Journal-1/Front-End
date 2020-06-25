@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, Redirect} from 'react-router-dom';
 
 import { axiosWithAuth } from '../utils/axiosAuth.js';
 
@@ -35,7 +35,7 @@ const login = () => {
             .then((res) => {
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', res.data.token);
-                //history.push('/dashboard');
+                window.location.href = '/dashboard'
             })
             .catch(err => console.log(err))
            
@@ -63,11 +63,9 @@ const login = () => {
                 name='password'
                 value={credentials.password}
                 onChange={onInputChange}/>
-            <Link to='/dashboard'>
                 <Button onClick={login} variant='contained'>
                         Login    
                 </Button>
-            </Link>
         </form>
     </div>
     )
