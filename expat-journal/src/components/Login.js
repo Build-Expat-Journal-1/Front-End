@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import { axiosWithAuth } from '../utils/axiosAuth.js';
 
@@ -29,21 +29,22 @@ const onInputChange = evt => {
         })
     }
 
-const login = (e) => {
-        e.preventDefault();
-        history.push('/dashboard')
+const login = () => {
         axiosWithAuth()
             .post('/api/auth/login ', credentials)
             .then((res) => {
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', res.data.token);
-                ;
+                //history.push('/dashboard');
             })
             .catch(err => console.log(err))
            
       };
     
     return (
+        <div>
+          
+            
        
         <form className='form'>
                 <TextField 
@@ -62,11 +63,13 @@ const login = (e) => {
                 name='password'
                 value={credentials.password}
                 onChange={onInputChange}/>
-
+            <Link to='/dashboard'>
                 <Button onClick={login} variant='contained'>
-                    Login
+                        Login    
                 </Button>
+            </Link>
         </form>
+    </div>
     )
 
 }

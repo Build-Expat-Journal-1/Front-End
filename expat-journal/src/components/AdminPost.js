@@ -9,6 +9,8 @@ import { TimelineLite, Power3 } from 'gsap'
 import EditStory from './EditStory';
 import DeleteStory from './DeleteStory';
 
+import './AdminPost.css'
+
 
 const useStyles = makeStyles({
     root: {
@@ -58,8 +60,10 @@ const AdminPost = (props) => {
                 <Typography variant="body2" color="textSecondary" component="p">
                 {story.description}
                 </Typography>
+                <div className="adminTools">
                 <EditStory story={story}/>
                 <DeleteStory story={story}/>
+                </div>   
             </CardContent>
         </Card>
         </div>

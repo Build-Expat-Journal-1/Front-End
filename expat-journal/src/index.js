@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 import rootReducer from './reducers'
 import { createBrowserHistory } from 'history'
 
@@ -15,7 +16,7 @@ import * as serviceWorker from './serviceWorker';
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, logger)
 );
 
 const history = createBrowserHistory()
@@ -26,9 +27,9 @@ const rootElement = document.getElementById('root')
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router history={history}>
+        <Router>
           <App />
-      </Router>
+        </Router>   
     </Provider>
   </React.StrictMode>,
   rootElement 

@@ -1,5 +1,5 @@
 import React, {useRef,useEffect,useState} from 'react';
-import { BrowserRouter as Route, Link, Switch, useHistory } from 'react-router-dom';
+import { BrowserRouter as Route, Link, Switch, useHistory, Router } from 'react-router-dom';
 
 import './App.css';
 
@@ -65,50 +65,49 @@ useEffect(() =>{
  })
 
   return (
-  <div ref= {element => app=element}>
-   
-      <AppBar className={classes.root} position='static'>
-            <Toolbar>
-                <Button>
-                    <Link to='/' className={classes.links}>Login</Link>
-                </Button>
-                <Button>
-                    <Link to='/sign-up' className={classes.links}>Sign Up</Link>
-                </Button>
+      <div ref= {element => app=element}>
+      
+          <AppBar className={classes.root} position='static'>
+                <Toolbar>
+                    <Button>
+                        <Link to='/' className={classes.links}>Login</Link>
+                    </Button>
+                    <Button>
+                        <Link to='/sign-up' className={classes.links}>Sign Up</Link>
+                    </Button>
+            
+                      <Button>
+                        <Link to='/home' className={classes.links}>Home</Link>
+                    </Button>
+                    <div className={classes.icon}>
+                        <IconButton
+                          edge="end"
+                          aria-label="account of current user"
+                          color="inherit"
+                          onClick={() => history.push('/dashboard')}
+                        >
+                              <AccountCircle />
+                        </IconButton>
+                  </div>
+              </Toolbar>
+            </AppBar>  
+
+        <Switch>
+              <Route exact path='/' component={Login}>
+                <Login />
+              </Route>
+              <Route exact path='/sign-up' component={SignUp}>
+                <SignUp />
+              </Route>
+              <Route exact path='/home'>
+                <Home />
+              </Route>
+              <PrivateRoute exact path='/dashboard' component={Dashboard}> 
+                <Dashboard />
+              </PrivateRoute>
+          </Switch>
         
-                  <Button>
-                    <Link to='/home' className={classes.links}>Home</Link>
-                </Button>
-                <div className={classes.icon}>
-                    <IconButton
-                      edge="end"
-                      aria-label="account of current user"
-                      color="inherit"
-                      onClick={() => history.push('/dashboard')}
-                    >
-                          <AccountCircle />
-                    </IconButton>
-              </div>
-          </Toolbar>
-        </AppBar>  
-
-     <Switch>
-          <Route exact path='/' component={Login}>
-            <Login />
-          </Route>
-
-          <Route path='/sign-up' component={SignUp}>
-            <SignUp onClick={()=> setModalOpen(true)} />
-          </Route>
-    
-          <Route path='/home'>
-            <Home/>
-          </Route>
-
-          <PrivateRoute path='/dashboard' component={Dashboard}/>     
-    </Switch>
-
-   </div>
+      </div>
 
   )
 }
