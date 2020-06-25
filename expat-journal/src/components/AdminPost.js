@@ -15,7 +15,9 @@ import './AdminPost.css'
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
-        margin: 10
+        margin: 10,
+        paddingRight: 20,
+        paddingLeft: 20,
     },
     media: {
         height: 275,
