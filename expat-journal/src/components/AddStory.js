@@ -77,7 +77,7 @@ const AddStory = (props) => {
                         <TextField
                             name='description'
                             value={newStory.description}
-                            placeholder='WHAT HAPPENED'
+                            placeholder='DESCRIPTION'
                             onChange={onInputChange}
                             />
                         <TextField
