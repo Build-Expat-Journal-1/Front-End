@@ -61,37 +61,38 @@ const AddStory = (props) => {
                 <form className='addStoryForm'>
                     <div>{props.success}</div>
                     <h2>Add Story</h2>
-                        <TextField 
+                  
+                    <TextField style={{marginTop:'1rem'}}
                             name='title'
                             value={newStory.title}
                             placeholder='TITLE'
                             onChange={onInputChange}
                             />
-                        <TextField
+                        <TextField style={{marginTop:'1rem'}}
                             name='location'
                             value={newStory.location}
                             placeholder='LOCATION'
                             onChange={onInputChange}
                             />
-                        <TextField
+                        <TextField style={{marginTop:'1rem'}}
                             name='date'
                             value={newStory.date}
                             placeholder='DATE'
                             onChange={onInputChange}
                             />
-                        <TextField
+                        <TextField style={{marginTop:'1rem'}}
                             name='description'
                             value={newStory.description}
                             placeholder='DESCRIPTION'
                             onChange={onInputChange}
                             />
-                        <TextField
+                        <TextField style={{marginTop:'1rem'}}
                             name='storyImage'
                             value={newStory.storyImage}
                             placeholder='IMAGE URL'
                             onChange={onInputChange}
                             />
-                        <Button variant='outlined' onClick={addStory}>Submit</Button>
+                        <Button style={{marginTop:'1rem'}} variant='outlined' onClick={addStory}>Submit</Button>
                         
                         <IconButton onClick={() => {closeModal()}}>
                             <CloseIcon/>

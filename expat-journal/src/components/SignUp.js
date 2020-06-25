@@ -98,7 +98,10 @@ const SignUp = (props) => {
     }, [signUpForm, setDisabled])
 
     return(
-      <div className="sign-up-container">
+
+     
+   
+      <div className="sign-up-container"style={{display:'flex', justifyContent:'center', alignContent:'center', height:'80vh' }}>
     
           
       <div className='error'>
@@ -109,15 +112,18 @@ const SignUp = (props) => {
         </div>
                 
       
-        <form noValidate autoComplete="off">
-          
+        <form noValidate autoComplete="off" style={{width:'50%',alignSelf:'center'}}>
+              
             <div style={{display:'flex', justifyContent:'center', alignContent:'center', flexDirection:'column'}} className="imput-container">
-         
+           
+               <h1 style={{paddingLeft:'25%'}}>A Whole New World Awaits...</h1>
+               <h3 style={{paddingLeft:'40%'}}>Sign Up Today!</h3>
+               
                 <TextField name='username' value={signUpForm.username} onChange={onInputChange} required id="username" label="Username" type="username" variant="filled" />
-                <TextField name='password' value={signUpForm.password} onChange={onInputChange} required id="password" type="password" label="Password" variant='filled'/>
+                <TextField style={{marginTop:'2rem'}} name='password' value={signUpForm.password} onChange={onInputChange} required id="password" type="password" label="Password" variant='filled'/>
             
             </div>
-            <div className= 'submit-btn'>
+            <div className= 'submit-btn' style={{display:'flex',justifyContent:'center', marginTop:'2rem'}}>
               <Link to='/'>
                   <Button onClick={onSubmit} variant="contained"> Submit </Button>
                 </Link>
