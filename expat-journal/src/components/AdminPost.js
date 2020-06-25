@@ -5,18 +5,19 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {TweenMax, TimelineLite, Power3} from 'gsap'
+import { TimelineLite, Power3 } from 'gsap'
 import EditStory from './EditStory';
 import DeleteStory from './DeleteStory';
 
-import { connect } from 'react-redux'
-import { editStory } from '../actions/editStory'
-import { deleteStory } from '../actions/deleteStory'
+import './AdminPost.css'
+
 
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
-        margin: 10
+        margin: 10,
+        paddingRight: 20,
+        paddingLeft: 20,
     },
     media: {
         height: 275,
@@ -38,7 +39,7 @@ const AdminPost = (props) => {
         tl.from(userStory,2,{opacity:0,ease:Power3.easeInOut}, .1)
             .from(userStoryName, 1.2, {opacity:1,y:1280, ease:Power3.easeOut}, 0)
             
-        })
+        }, [])
       
 //End of Animation
 
@@ -61,8 +62,10 @@ const AdminPost = (props) => {
                 <Typography variant="body2" color="textSecondary" component="p">
                 {story.description}
                 </Typography>
+                <div className="adminTools">
                 <EditStory story={story}/>
                 <DeleteStory story={story}/>
+                </div>   
             </CardContent>
         </Card>
         </div>

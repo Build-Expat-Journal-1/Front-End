@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 
 import { editStory } from '../actions/editStory'
 
+import IconButton from '@material-ui/core/IconButton';
+import EditIcon from '@material-ui/icons/Edit'
+
 const EditStory = props => {
    const [ editing, setEditing ] = useState(false)
    const [ storytoEdit, setStoryToEdit ] = useState(props.story)
@@ -25,7 +28,9 @@ const EditStory = props => {
 
     return (
       <div>
-        <button onClick={() => setEditing(true)}>Edit</button>
+        <IconButton onClick={() => {setEditing(true)}}>
+          <EditIcon/>
+        </IconButton>
         { editing && (
                 <form>
                   <input 
@@ -35,6 +40,10 @@ const EditStory = props => {
                     <input 
                     name='location'
                     value={storytoEdit.location}
+                    onChange={onInputChange}/>
+                    <input 
+                    name='date'
+                    value={storytoEdit.date}
                     onChange={onInputChange}/>
                     <input 
                     name='description'
@@ -47,7 +56,7 @@ const EditStory = props => {
                   
                   <button onClick={editStory} 
                   className="button">Save Edits</button>
-                </form>
+              </form>
         )
         }
         

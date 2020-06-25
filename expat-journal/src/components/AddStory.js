@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { addStory } from '../actions/addStory'
-import { Fab, TextField,Button } from '@material-ui/core'
+import { Fab, TextField, Button, Typography } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add'
+import CloseIcon from '@material-ui/icons/Close';
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
 
@@ -21,6 +23,7 @@ const AddStory = (props) => {
     const [ newStory, setNewStory ] = useState(initalStory)
     const [ modalOpen, setModalOpen ]= useState(false)
 
+
     const onInputChange = evt => {
         const name = evt.target.name
         const value = evt.target.value
@@ -33,14 +36,16 @@ const AddStory = (props) => {
 
     const addStory = (e) => {
         e.preventDefault();
+        setModalOpen(false)
         props.addStory(newStory)
         setNewStory(initalStory)
-        setModalOpen(false)
+        
     }
 
-    const closeModal = e => {
-        e.preventDefault();
+    const closeModal = () => {
         setModalOpen(false)
+        window.location.reload()
+
     }
 
 
@@ -52,46 +57,61 @@ const AddStory = (props) => {
                 aria-label="add">
             <AddIcon />
 
-        <Modal className='addStoryModal' isOpen={modalOpen}>  
+        <Modal className='addStoryModal' isOpen={modalOpen}>
                 <form className='addStoryForm'>
-                <legend>Add A Story</legend>
-                <TextField style={{marginTop:'1rem'}}
-                    name='title'
-                    value={newStory.title}
-                    placeholder='Title'
-                    onChange={onInputChange}
-                    />
-                <TextField style={{marginTop:'1rem'}}
-                    name='location'
-                    value={newStory.location}
-                    placeholder='Location'
-                    onChange={onInputChange}
-                    />
-                <TextField style={{marginTop:'1rem'}}
-                    name='date'
-                    value={newStory.date}
-                    placeholder='Date'
-                    onChange={onInputChange}
-                    />
-                <TextField style={{marginTop:'1rem'}}
-                    name='description'
-                    value={newStory.description}
-                    placeholder='Description'
-                    onChange={onInputChange}
-                    />
-                <TextField style={{marginTop:'1rem'}}
-                    name='storyImage'
-                    value={newStory.storyImage}
-                    placeholder='imageURL'
-                    onChange={onInputChange}
-                    />
-                <Button style={{marginTop:'1rem'}} onClick={addStory}>Submit</Button>
-                <Button onClick={() => closeModal()}>Close</Button>
-            </form>
-        </Modal>        
-    </Fab>
+                    <div>{props.success}</div>
+                    <h2>Add Story</h2>
+                  
+                    <TextField style={{marginTop:'1rem'}}
+                            name='title'
+                            value={newStory.title}
+                            placeholder='TITLE'
+                            onChange={onInputChange}
+                            />
+                        <TextField style={{marginTop:'1rem'}}
+                            name='location'
+                            value={newStory.location}
+                            placeholder='LOCATION'
+                            onChange={onInputChange}
+                            />
+                        <TextField style={{marginTop:'1rem'}}
+                            name='date'
+                            value={newStory.date}
+                            placeholder='DATE'
+                            onChange={onInputChange}
+                            />
+                        <TextField style={{marginTop:'1rem'}}
+                            name='description'
+                            value={newStory.description}
+                            placeholder='DESCRIPTION'
+                            onChange={onInputChange}
+                            />
+                        <TextField style={{marginTop:'1rem'}}
+                            name='storyImage'
+                            value={newStory.storyImage}
+                            placeholder='IMAGE URL'
+                            onChange={onInputChange}
+                            />
+                        <Button style={{marginTop:'1rem'}} variant='outlined' onClick={addStory}>Submit</Button>
+                        
+                        <IconButton onClick={() => {closeModal()}}>
+                            <CloseIcon/>
+                        </IconButton>
+                        
+                    </form>
+                </Modal>        
+            </Fab>
          )
         }
 
 
-export default connect(null, {addStory})(AddStory)
+const mapStateToProps = (state) => {
+    
+    return {
+        add: state.addStoryReducer.stories,
+        success: state.addStoryReducer.success_message
+        
+    }
+}
+
+export default connect(mapStateToProps, {addStory})(AddStory)

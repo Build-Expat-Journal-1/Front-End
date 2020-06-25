@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link, Redirect} from 'react-router-dom';
 
 import { axiosWithAuth } from '../utils/axiosAuth.js';
 
@@ -29,21 +29,23 @@ const onInputChange = evt => {
         })
     }
 
-const login = (e) => {
-        e.preventDefault();
-        history.push('/dashboard')
+const login = () => {
         axiosWithAuth()
             .post('/api/auth/login ', credentials)
             .then((res) => {
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', res.data.token);
-                ;
+                window.location.href = '/dashboard'
             })
             .catch(err => console.log(err))
            
       };
     
     return (
+        <div>
+          
+            
+       
         <form className='form'>
                 <TextField 
                 id='outlined-basic' 
@@ -61,11 +63,11 @@ const login = (e) => {
                 name='password'
                 value={credentials.password}
                 onChange={onInputChange}/>
-
-                <Button onClick={login} variant='contained' color='primary'>
-                    Login
+                <Button onClick={login} variant='contained'>
+                        Login    
                 </Button>
         </form>
+    </div>
     )
 
 }

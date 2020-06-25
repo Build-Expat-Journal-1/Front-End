@@ -1,4 +1,5 @@
 import React,{useState, useEffect,} from "react"
+import { Link } from 'react-router-dom'
 import Post from './Post'
 import axios from 'axios'
 
@@ -16,6 +17,7 @@ const Home = () => {
         
    }, []) 
     return (
+      
         <div className='feed'>
               {
                 userStories.map(info => {

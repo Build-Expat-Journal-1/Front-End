@@ -24,7 +24,7 @@ const SignUp = (props) => {
 
     const [signUpForm, setSignUp] = useState(signUpInitialValue);
     const [signUpError, setSignUpError] = useState(errors) 
-    const [disabled, setDisabled] = useState(true)   
+    const [ disabled, setDisabled ] = useState(true)   
     
     const history = useHistory()
   
@@ -95,12 +95,14 @@ const SignUp = (props) => {
       .then(valid => {
         setDisabled(!valid);
       })
-    }, [signUpForm])
+    }, [signUpForm, setDisabled])
 
     return(
-      <div className="sign-up-container" style={{display:'flex', justifyContent:'center', alignContent:'center', height:'80vh' }}>
+
      
    
+      <div className="sign-up-container"style={{display:'flex', justifyContent:'center', alignContent:'center', height:'80vh' }}>
+    
           
       <div className='error'>
                 
@@ -114,8 +116,8 @@ const SignUp = (props) => {
               
             <div style={{display:'flex', justifyContent:'center', alignContent:'center', flexDirection:'column'}} className="imput-container">
            
-               <h1 style={{paddingLeft:'15%'}}>A Whole New World Awaits...</h1>
-               <h3 style={{paddingLeft:'35%'}}>Sign Up Today!</h3>
+               <h1 style={{paddingLeft:'25%'}}>A Whole New World Awaits...</h1>
+               <h3 style={{paddingLeft:'40%'}}>Sign Up Today!</h3>
                
                 <TextField name='username' value={signUpForm.username} onChange={onInputChange} required id="username" label="Username" type="username" variant="filled" />
                 <TextField style={{marginTop:'2rem'}} name='password' value={signUpForm.password} onChange={onInputChange} required id="password" type="password" label="Password" variant='filled'/>
@@ -123,7 +125,7 @@ const SignUp = (props) => {
             </div>
             <div className= 'submit-btn' style={{display:'flex',justifyContent:'center', marginTop:'2rem'}}>
               <Link to='/'>
-                  <Button  onClick={onSubmit} isOpen={false} variant="contained"> Submit </Button>
+                  <Button onClick={onSubmit} variant="contained"> Submit </Button>
                 </Link>
             </div>
          

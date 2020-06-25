@@ -5,7 +5,7 @@ import {
 } from '../actions/editStory'
 
 const initalState = {
-    story: {},
+    stories: [],
     error: '',
     isFetching: false
 }
@@ -21,7 +21,7 @@ export const editStoryReducer = ( state=initalState, action) => {
         case EDIT_STORY_SUCCESS:
             return {
                 ...state,
-                story: action.payload,
+                stories: action.payload,
                 isFetching: false,
                 error: ''
             };

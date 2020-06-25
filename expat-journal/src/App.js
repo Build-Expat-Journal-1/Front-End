@@ -1,5 +1,5 @@
 import React, {useRef,useEffect,useState} from 'react';
-import { BrowserRouter as Route, Link, Switch, useHistory } from 'react-router-dom';
+import { BrowserRouter as Route, Link, Switch, useHistory, Router } from 'react-router-dom';
 
 import './App.css';
 
@@ -9,14 +9,13 @@ import Login from './components/Login'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import PrivateRoute from './utils/PrivateRoute'
-import Profile from './components/Profile'
 import Dashboard from './components/Dashboard'
 
-import {TweenMax, TimelineLite, Power3} from 'gsap'
+import {TweenMax } from 'gsap'
 
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
-import { Toolbar, Typography, Button, IconButton } from '@material-ui/core';
+import { Toolbar, Button, IconButton } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
@@ -38,6 +37,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    background: `#E5989B`
   },
   links: {
     textDecoration: 'none',
@@ -51,7 +51,7 @@ function App() {
   
   const classes = useStyles();
   const history = useHistory();
-  const [modalOpen, setModalOpen]= useState(true)
+  const [ modalOpen, setModalOpen ]= useState(false)
   
 
   // Gsap Animation
@@ -65,52 +65,49 @@ useEffect(() =>{
  })
 
   return (
-  <div ref= {element => app=element}>
-   
-      <AppBar className={classes.root} position='static'>
-            <Toolbar>
-                <Button>
-                    <Link to='/' className={classes.links}>Login</Link>
-                </Button>
-                <Button>
-                    <Link to='/sign-up' className={classes.links}>Sign Up</Link>
-                </Button>
+      <div ref= {element => app=element}>
+      
+          <AppBar className={classes.root} position='static'>
+                <Toolbar>
+                    <Button>
+                        <Link to='/' className={classes.links}>Login</Link>
+                    </Button>
+                    <Button>
+                        <Link to='/sign-up' className={classes.links}>Sign Up</Link>
+                    </Button>
+            
+                      <Button>
+                        <Link to='/home' className={classes.links}>Home</Link>
+                    </Button>
+                    <div className={classes.icon}>
+                        <IconButton
+                          edge="end"
+                          aria-label="account of current user"
+                          color="inherit"
+                          onClick={() => history.push('/dashboard')}
+                        >
+                              <AccountCircle />
+                        </IconButton>
+                  </div>
+              </Toolbar>
+            </AppBar>  
+
+        <Switch>
+              <Route exact path='/' component={Login}>
+                <Login />
+              </Route>
+              <Route exact path='/sign-up' component={SignUp}>
+                <SignUp />
+              </Route>
+              <Route exact path='/home'>
+                <Home />
+              </Route>
+              <PrivateRoute exact path='/dashboard' component={Dashboard}> 
+                <Dashboard />
+              </PrivateRoute>
+          </Switch>
         
-                  <Button>
-                    <Link to='/home' className={classes.links}>Home</Link>
-                </Button>
-                <div className={classes.icon}>
-                    <IconButton
-                      edge="end"
-                      aria-label="account of current user"
-                      color="inherit"
-                      onClick={() => history.push('/dashboard')}
-                    >
-                          <AccountCircle />
-                    </IconButton>
-              </div>
-          </Toolbar>
-        </AppBar>  
-
-     <Switch>
-          <Route exact path='/' component={Login}>
-            <Login />
-          </Route>
-
-          <Route path='/sign-up' component={SignUp}>
-            <SignUp setModalOpen={setModalOpen} onClick={()=> setModalOpen(true)} />
-          </Route>
-    
-          <Route path='/home'>
-            <Home/>
-          </Route>
-
-          <Route path='/dashboard' component={Dashboard}>
-            <Dashboard />
-         </Route>
-    </Switch>
-
-   </div>
+      </div>
 
   )
 }
