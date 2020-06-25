@@ -77,7 +77,7 @@ useEffect(() =>{
                     </Button>
             
                       <Button>
-                        <Link to='/home' className={classes.links}>Home</Link>
+                        <Link to='/home' className={classes.links}>Community</Link>
                     </Button>
                     <div className={classes.icon}>
                         <IconButton
