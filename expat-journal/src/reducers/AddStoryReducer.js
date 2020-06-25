@@ -33,7 +33,7 @@ export const addStoryReducer = (state = initalState, action) => {
         case ADD_STORY_FAIL:
             return {
                 ...state,
-                error: action.payload
+                error: 'could not add story'
             };
         default:
             return state

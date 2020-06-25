@@ -60,6 +60,7 @@ const AddStory = (props) => {
         <Modal className='addStoryModal' isOpen={modalOpen}>
                 <form className='addStoryForm'>
                     <div>{props.success}</div>
+                    <div>{props.error}</div>
                     <h2>Add Story</h2>
                   
                     <TextField style={{marginTop:'1rem'}}
@@ -109,7 +110,8 @@ const mapStateToProps = (state) => {
     
     return {
         add: state.addStoryReducer.stories,
-        success: state.addStoryReducer.success_message
+        success: state.addStoryReducer.success_message,
+        error: state.addStoryReducer.error
         
     }
 }
