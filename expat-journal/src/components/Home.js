@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import Post from './Post'
 import axios from 'axios'
 
+import './Home.css'
+
 const Home = () => {
   const [userStories, setStories]= useState([])
 
@@ -17,6 +19,10 @@ const Home = () => {
         
    }, []) 
     return (
+      <div>
+      <div className='CommunityBar'>
+        <h1>STORIES FROM OUR COMMUNITY</h1>
+      </div>
       
         <div className='feed'>
               {
@@ -27,6 +33,7 @@ const Home = () => {
                 })
               }
         </div>
+      </div>
     )
 
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import AdminPost from "./AdminPost.js"
 import AddStory from './AddStory.js'
+import { Typography } from '@material-ui/core'
 
 import './Profile.css'
 
@@ -24,7 +25,7 @@ const Profile = (props) => {
                 }, [props.edit, props.delete, props.add])
 
     return (
-      <div>  
+      <div>
         <div className='addStoryToolBar'>
             <AddStory />
         </div>
