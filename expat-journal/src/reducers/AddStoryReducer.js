@@ -28,7 +28,7 @@ export const addStoryReducer = (state = initalState, action) => {
                 ],
                 isFetching: false,
                 error: '',
-                success_message: 'Story added! You can add another story now, or click the close button'
+                success_message: 'Story added! You can add another story, or click the close button'
             };
         case ADD_STORY_FAIL:
             return {
