@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { addStory } from '../actions/addStory'
 import { Fab, TextField, Button, Typography } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add'
+import CloseIcon from '@material-ui/icons/Close';
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
 
@@ -42,6 +44,8 @@ const AddStory = (props) => {
 
     const closeModal = () => {
         setModalOpen(false)
+        window.location.reload()
+
     }
 
 
@@ -55,6 +59,7 @@ const AddStory = (props) => {
 
         <Modal className='addStoryModal' isOpen={modalOpen}>
                 <form className='addStoryForm'>
+                    <div>{props.success}</div>
                     <h2>Add Story</h2>
                         <TextField 
                             name='title'
@@ -87,7 +92,11 @@ const AddStory = (props) => {
                             onChange={onInputChange}
                             />
                         <Button variant='outlined' onClick={addStory}>Submit</Button>
-                        <button>Close</button>
+                        
+                        <IconButton onClick={() => {closeModal()}}>
+                            <CloseIcon/>
+                        </IconButton>
+                        
                     </form>
                 </Modal>        
             </Fab>
@@ -95,4 +104,13 @@ const AddStory = (props) => {
         }
 
 
-export default connect(null, {addStory})(AddStory)
+const mapStateToProps = (state) => {
+    
+    return {
+        add: state.addStoryReducer.stories,
+        success: state.addStoryReducer.success_message
+        
+    }
+}
+
+export default connect(mapStateToProps, {addStory})(AddStory)
