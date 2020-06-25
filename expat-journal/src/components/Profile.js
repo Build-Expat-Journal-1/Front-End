@@ -21,7 +21,7 @@ const Profile = (props) => {
                         setUserStories(res.data),
                         console.log('i got new stories'))
                     .catch(err => console.log(err))
-                }, [props.edit, props.delete])
+                }, [props.edit, props.delete, props.add])
 
     return (
       <div>  

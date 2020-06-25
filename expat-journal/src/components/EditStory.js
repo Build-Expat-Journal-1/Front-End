@@ -42,6 +42,10 @@ const EditStory = props => {
                     value={storytoEdit.location}
                     onChange={onInputChange}/>
                     <input 
+                    name='date'
+                    value={storytoEdit.date}
+                    onChange={onInputChange}/>
+                    <input 
                     name='description'
                     value={storytoEdit.description}
                     onChange={onInputChange}/>

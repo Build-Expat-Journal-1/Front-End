@@ -7,7 +7,8 @@ import {
 const initalState = {
     stories: [],
     error: '',
-    isFetching: false
+    isFetching: false,
+    success_message: ''
 };
 
 export const addStoryReducer = (state = initalState, action) => {
@@ -26,7 +27,8 @@ export const addStoryReducer = (state = initalState, action) => {
                     action.payload
                 ],
                 isFetching: false,
-                error: ''
+                error: '',
+                success_message: 'Story added! You can add another story now, or click the close button'
             };
         case ADD_STORY_FAIL:
             return {
