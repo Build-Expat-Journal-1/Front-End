@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { addStory } from '../actions/addStory'
-import { Fab, TextField } from '@material-ui/core'
+import { Fab, TextField,Button } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
@@ -55,38 +55,38 @@ const AddStory = (props) => {
         <Modal className='addStoryModal' isOpen={modalOpen}>  
                 <form className='addStoryForm'>
                 <legend>Add A Story</legend>
-                <TextField 
+                <TextField style={{marginTop:'1rem'}}
                     name='title'
                     value={newStory.title}
-                    placeholder='title'
+                    placeholder='Title'
                     onChange={onInputChange}
                     />
-                <TextField
+                <TextField style={{marginTop:'1rem'}}
                     name='location'
                     value={newStory.location}
-                    placeholder='location'
+                    placeholder='Location'
                     onChange={onInputChange}
                     />
-                <TextField
+                <TextField style={{marginTop:'1rem'}}
                     name='date'
                     value={newStory.date}
-                    placeholder='date'
+                    placeholder='Date'
                     onChange={onInputChange}
                     />
-                <TextField
+                <TextField style={{marginTop:'1rem'}}
                     name='description'
                     value={newStory.description}
-                    placeholder='description'
+                    placeholder='Description'
                     onChange={onInputChange}
                     />
-                <TextField
+                <TextField style={{marginTop:'1rem'}}
                     name='storyImage'
                     value={newStory.storyImage}
                     placeholder='imageURL'
                     onChange={onInputChange}
                     />
-                <button onClick={addStory}>Submit</button>
-                <button onClick={() => closeModal()}>Close</button>
+                <Button style={{marginTop:'1rem'}} onClick={addStory}>Submit</Button>
+                <Button onClick={() => closeModal()}>Close</Button>
             </form>
         </Modal>        
     </Fab>
